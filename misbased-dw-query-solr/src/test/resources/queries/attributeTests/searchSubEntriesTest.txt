@@ -1,0 +1,25 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Diagnose" domain="untersuchung" extID="diagnose"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Diagnose
+B18 : Chronische Virushepatitis
+B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit] | B95 : Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind
+B95 : Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind | C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe | C76-C80 : Bösartige Neubildungen ungenau bezeichneter. sekundärer und nicht näher bezeichneter Lokalisationen | A30-A49 : Sonstige bakterielle Krankheiten | C76-C80 : Bösartige Neubildungen ungenau bezeichneter. sekundärer und nicht näher bezeichneter Lokalisationen | C81-C96 : Bösartige Neubildungen des lymphatischen. blutbildenden und verwandten Gewebes. als primär festgestellt oder vermutet | D48 : Neubildung unsicheren oder unbekannten Verhaltens an sonstigen und nicht näher bezeichneten Lokalisationen
+A30-A49 : Sonstige bakterielle Krankheiten
+A30-A49 : Sonstige bakterielle Krankheiten | C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe
+B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit]
+A30-A49 : Sonstige bakterielle Krankheiten
+C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe
+B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit] | C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe
+C76-C80 : Bösartige Neubildungen ungenau bezeichneter. sekundärer und nicht näher bezeichneter Lokalisationen | C81-C96 : Bösartige Neubildungen des lymphatischen. blutbildenden und verwandten Gewebes. als primär festgestellt oder vermutet | D48 : Neubildung unsicheren oder unbekannten Verhaltens an sonstigen und nicht näher bezeichneten Lokalisationen | C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe | B95 : Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind | B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit]
+C81-C96 : Bösartige Neubildungen des lymphatischen. blutbildenden und verwandten Gewebes. als primär festgestellt oder vermutet
+B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit] | B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit] | B95 : Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind | B24 : Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit] | C00-C75 : Bösartige Neubildungen an genau bezeichneten Lokalisationen. als primär festgestellt oder vermutet. ausgenommen lymphatisches. blutbildendes und verwandtes Gewebe
+B18 : Chronische Virushepatitis | C76-C80 : Bösartige Neubildungen ungenau bezeichneter. sekundärer und nicht näher bezeichneter Lokalisationen

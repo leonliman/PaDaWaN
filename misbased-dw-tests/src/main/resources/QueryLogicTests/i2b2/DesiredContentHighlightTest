@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute alias="Param1" extID="Brieftext" domain="Arztbriefe" contentOperator="contains" desiredContent="Pneumektomie" />
+</Query>
+
+---Result---
+
+Brieftext
+Diagnosen: Plattenepithel-Ca.-Rezidiv mit

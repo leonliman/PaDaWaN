@@ -1,0 +1,14 @@
+<!-- before -->
+---Query---
+
+<Query>
+    <Attribute elementID="Param1" extID="0000000002" domain="Labor" />
+    <Attribute extID="0000000001" domain="Labor" >
+        <TempOpRel refElemID="Param1" before="true" />
+    </Attribute>
+</Query>
+
+---Result---
+
+Calcium_g_dl	Natrium_g_dl
+120.0 | 5.0 | 15.0	15.0

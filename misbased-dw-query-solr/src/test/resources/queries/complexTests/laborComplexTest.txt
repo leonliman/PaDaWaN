@@ -1,0 +1,25 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Protein (U)" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l"/>
+    </DistributionRow>
+    <DistributionColumn>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="MORE" desiredContent="50" domain="labor" extID="natrium_mmol_l"/>
+      <Attribute attrName="Monozyten (%)" contentOperator="LESS" desiredContent="40" domain="labor" extID="monozyten__"/>
+      <Attribute attrName="Protein (U)" contentOperator="MORE_OR_EQUAL" desiredContent="40" domain="labor" extID="protein__u__"/>
+    </DistributionColumn>
+  </IDFilter>
+</Query>
+
+
+
+
+---Result---
+
+	Fälle	Natrium (mmol/l) > 50	Monozyten (%) < 40	Protein (U) >= 40	Summe	Doppelte
+Alle	16	10	9	12	31	15
+Protein (U)	16	10	9	12	31	15
+Kalium (mmol/l)	13	8	6	9	23	10

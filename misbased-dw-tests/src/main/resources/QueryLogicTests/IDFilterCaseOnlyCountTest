@@ -1,0 +1,12 @@
+---Query---
+
+<Query onlyCount="true" >
+    <IDFilter filterIDType="CaseID">
+    	<Attribute extID="0000000002" domain="Labor" reductionOp="max. Wert" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+count
+2

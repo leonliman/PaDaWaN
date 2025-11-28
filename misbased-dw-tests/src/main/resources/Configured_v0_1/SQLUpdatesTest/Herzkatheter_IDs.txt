@@ -1,0 +1,24 @@
+depth	ID	keep	listID	listDiscr	name	comments	numType	unit	boolType	choiceType	dateType	structureType	textType	examples	count
+0	#root	x			#root							x			0
+1	  DokVer	x			DokVer							x			0
+1	  Dokumentdatum	x			Dokumentdatum							x			0
+1	  Befunddaten	x			Befunddaten							x			0
+2	    ZKAHKKORO	x			Koronarangiographie/PTCA							x			0
+3	      ZKAHKVENTR	x			Laevokardiographie							x			0
+4	        ZKAHKVEGLO	x			Linksventrikuläre Globalfunktion		x							0;	1
+4	        ZKAHKVEEFP	x			EF in %		x							                                                                                                                                 56;	1
+4	        ZKAHKVEMKI	x			Mitralinsuffizienz							x			0
+4	        ZKAHKVEMYO	x			(1) anterobasal		x							0;	1
+4	        ZKAHKVEVOR	x			(2) anterolateral		x							0;	1
+4	        ZKAHKVEANT	x			(3) apikal		x							5;	1
+4	        ZKAHKVEPOS	x			(4) diaphragmal		x							0;	1
+4	        ZKAHKVEPOE	x			(5) posterobasal		x							0;	1
+4	        ZKAHKVESEP	x			(6) septal		x							0;	1
+4	        ZKAHKVEPEL	x			(7) posterolateral		x							0;	1
+4	        ZKAHKVEBES	x			Bes.heiten							x			0
+3	      ZKAHKALG	x			Koro/PCI Medikation							x			0
+4	        ZKAHKMEZEI	x	1		Zeit								x	15:40;15:53;	2
+4	        ZKAHKMEMED	x	1		Medikation								x	Sterofundi;Midazolam;	2
+4	        ZKAHKMEMEN	x	1		Menge		x							                                                                                                                            1000.00;                                                                                                                               1.50;	2
+4	        ZKAHKMEAPP	x	1		Applikationsform								x	PIN;IV;	2
+4	        ZKAHKMEFRE	x	1		Bemerkung								x	von Station;	1

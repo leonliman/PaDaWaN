@@ -1,0 +1,7 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry ExtID="Stammdaten" Name="Stammdaten" />
+	<CatalogEntry Project="AufnahmeEntlassung" ParentExtID="Stammdaten" ParentProject="" ExtID="Letzte Bewegung" Name="Letzte Bewegung" DataType="DateTime" />
+	<DataTable Project="AufnahmeEntlassung" CaseIDColumn="pfalnr" Special="Letzte Bewegung">
+		<DataSourceCSVDir Dir="Faelle" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

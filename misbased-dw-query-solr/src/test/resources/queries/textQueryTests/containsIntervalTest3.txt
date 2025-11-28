@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="[= Fieber Husten]" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS [= Fieber Husten]
+ei verspüre er kein Luftnot, kein Herzrasen, kein >>Fieber<<, kein >>Husten<<. Zudem berichtet der Pat. von Stres
+ei verspüre er kein Luftnot, kein Herzrasen, kein >>Fieber<<, kein >>Husten<<. Zudem berichtet der Pat. von Stres

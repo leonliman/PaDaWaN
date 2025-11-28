@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="20">
+    <Attribute domain="OPZeiten" extID="OZ28_AUSSC" reductionOp="Max"/>
+</Query>
+
+---Result---
+
+OZ28_AUSSC
+2009-03-13 12:25:00

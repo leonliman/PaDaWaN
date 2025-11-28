@@ -1,0 +1,15 @@
+<ImportConfig>
+	<Catalog>
+		<Entry ExtID="Stammdaten" Name="Stammdaten" />
+	</Catalog>
+	<Catalog Project="Gestorben" ParentExtID="Stammdaten" ParentProject="">
+		<Entry ExtID="Gestorben" Name="Gestorben" DataType="Bool" />
+	</Catalog>
+	<Data Project="Gestorben">
+		<CSVData Dir="Bewegungen" CaseIDColumn="FALNR" Encoding="Windows-1252" MeasureDateColumn="BWIDT" MeasureDateFormat="dd.mm.yyyy" MeasureTimeColumn="BWIZT" MeasureTimeFormat="hh:mm:ss">
+			<Filter FilterColumn="BEWTY" FilterValue="2" />
+			<Filter FilterColumn="BWART" FilterValue="T" />
+			<DataColumn ExtID="Gestorben" />
+		</CSVData>
+	</Data>
+</ImportConfig>

@@ -1,0 +1,13 @@
+---Query---
+
+<Query limitResult="0" onlyCount="true">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Count
+16

@@ -1,0 +1,26 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Alter" contentOperator="LESS" desiredContent="50" domain="stammdaten" extID="alter"/>
+      <Attribute attrName="Alter" contentOperator="MORE" desiredContent="50" domain="stammdaten" extID="alter"/>
+      <Attribute attrName="Alter" contentOperator="EQUALS" desiredContent="50" domain="stammdaten" extID="alter"/>
+      <Attribute attrName="Alter" contentOperator="BETWEEN" desiredContent="25;75" domain="stammdaten" extID="alter"/>
+      <Attribute attrName="Alter" contentOperator="LESS_OR_EQUAL" desiredContent="50" domain="stammdaten" extID="alter"/>
+      <Attribute attrName="Alter" contentOperator="MORE_OR_EQUAL" desiredContent="50" domain="stammdaten" extID="alter"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+	Fälle
+Alle	19
+Alter < 50	6
+Alter > 50	4
+Alter = 50	2
+Alter ]25, 75]	7
+Alter <= 50	8
+Alter >= 50	6

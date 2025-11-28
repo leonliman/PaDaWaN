@@ -1,0 +1,45 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Calcium (mmol/l)" domain="labor" extID="calcium_mmol_l" multipleRows="true"/>
+  </IDFilter>
+</Query>
+
+
+
+
+---Result---
+
+Calcium (mmol/l)
+40.0
+30.0
+20.0
+20.0
+20.0
+20.0
+10.0
+20.0
+50.0
+80.0
+80.0
+80.0
+80.0
+80.0
+10.0
+20.0
+40.0
+60.0
+90.0
+40.0
+30.0
+10.0
+10.0
+10.0
+20.0
+40.0
+60.0
+90.0
+40.0
+40.0
+40.0

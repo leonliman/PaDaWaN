@@ -1,0 +1,12 @@
+---Query---
+
+<Query limitResult="10">
+	<Attribute extID="0000000001" domain="Labor" />
+	<Attribute extID="0000000001" domain="Labor" contentOperator="more" desiredContent="15" />
+	<Attribute extID="0000000001" domain="Labor" contentOperator="between" desiredContent="5;15" />
+</Query>
+
+---Result---
+
+Natrium_g_dl	Natrium_g_dl	Natrium_g_dl
+10.0 | 20.0	20.0	10.0

@@ -1,0 +1,81 @@
+package de.uniwue.dw.core.sql.mysql;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
+import de.uniwue.dw.core.model.data.CatalogEntry;
+import de.uniwue.dw.core.model.data.CatalogEntryType;
+import de.uniwue.dw.core.model.manager.CatalogManager;
+import de.uniwue.dw.core.sql.SQLCatalogAdapter;
+import de.uniwue.misc.sql.SQLManager;
+import de.uniwue.misc.sql.SQLTypes;
+
+public class MySQLCatalogAdapter extends SQLCatalogAdapter {
+
+  public MySQLCatalogAdapter(SQLManager aSqlManager, CatalogManager aCatalogManager)
+          throws SQLException {
+    super(aSqlManager, aCatalogManager);
+  }
+
+  @Override
+  // @formatter:off
+  protected String getCreateTableString() {
+    String command = getCreateTableStub()
+            + "AttrID INT AUTO_INCREMENT NOT NULL PRIMARY KEY, \n"
+            + "Name VARCHAR(" + SQLCatalogAdapter.nameColumnSize + "), \n" 
+            + "ExtID VARCHAR(" + SQLCatalogAdapter.extIDColumnSize + ") NOT NULL, \n" 
+            + "ParentID INT, \n"
+            + "OrderValue DECIMAL(12,4), \n" 
+            + "DataType VARCHAR(50), \n"
+            + "Project VARCHAR(" + SQLCatalogAdapter.projectColumnSize + ") NOT NULL, \n" 
+            + "CreationTime " + SQLTypes.timestampType(sqlManager.config) + ",\n" 
+            + "UniqueName VARCHAR(" + SQLCatalogAdapter.uniqueNameColumnSize + "), \n" 
+            + "Description TEXT, \n"
+            + "UNIQUE INDEX " + getTableName() + "_ExtID_Project (ExtID, Project) \n)";
+    return command;
+  } // @formatter:on
+
+  protected CatalogEntry insertEntry(int attrID, String name, CatalogEntryType dataType, String extID,
+          int parentID, double orderValue, String aProject, Timestamp creationTime,
+          String uniqueName, String description) throws SQLException {
+    PreparedStatement st;
+    String command = "INSERT IGNORE INTO " + getTableName() + "\n"
+            + "(name, dataType, extId, parentID, orderValue, project, creationTime, uniqueName, description";
+    if (attrID != -1) {
+      command += ", attrID";
+    }
+    command += ") \n"
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?";
+    if (attrID != -1) {
+      command += ", ?";
+    }
+    command += ")";
+    st = sqlManager.createPreparedStatementReturnGeneratedKey(command);
+    int paramOffset = 1;
+    st.setString(paramOffset++, name);
+    st.setString(paramOffset++, dataType.toString());
+    st.setString(paramOffset++, extID);
+    st.setInt(paramOffset++, parentID);
+    st.setDouble(paramOffset++, orderValue);
+    st.setString(paramOffset++, aProject);
+    st.setTimestamp(paramOffset++, creationTime);
+    st.setString(paramOffset++, uniqueName);
+    st.setString(paramOffset++, description);
+    if (attrID != -1) {
+      st.setInt(paramOffset++, attrID);
+    }
+    st.execute();
+    int genID;
+    if (attrID == -1) {
+      genID = getGeneratedIntKey(st);
+    } else {
+      genID = attrID;
+    }
+    st.close();
+    CatalogEntry result = new CatalogEntry(genID, name, dataType, extID, parentID, orderValue,
+            aProject, uniqueName, description, creationTime);
+    return result;
+  }
+
+}

@@ -1,0 +1,10 @@
+---Query---
+
+<Query>
+    <Attribute extID="0000000001" domain="Labor" />
+    <Attribute extID="0000002153" domain="Labor" optional="true" />
+    <Attribute extID="Brieftext" domain="Arztbriefe" contentOperator="contains" desiredContent="Pneumektomie" optional="true" />
+    <Attribute extID="Brieftext" domain="Arztbriefe" optional="true" />
+</Query>
+
+---Result---

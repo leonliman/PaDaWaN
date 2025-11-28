@@ -1,0 +1,26 @@
+---input---
+
+<Query version="0.7">
+  <IDFilter filterIDType="CaseID">
+    <DistributionFilter>
+      <Or>
+        <Attribute attrName="Alter" domain="stammdaten" extID="alter"/>
+        <Attribute attrName="Aufnahme" domain="stammdaten" extID="aufnahme"/>
+      </Or>
+    </DistributionFilter>
+  </IDFilter>
+</Query>
+
+
+---expected---
+
+<Query version="0.7">
+  <IDFilter filterIDType="CaseID">
+    <DistributionFilter>
+      <Or>
+        <Attribute attrName="Alter" domain="stammdaten" extID="alter"/>
+        <Attribute attrName="Aufnahme" domain="stammdaten" extID="aufnahme"/>
+      </Or>
+    </DistributionFilter>
+  </IDFilter>
+</Query>

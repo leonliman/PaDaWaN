@@ -1,0 +1,13 @@
+---Query---
+
+<Query distinct="true">
+ <IDFilter filterIDType="CaseID" distinct="true">
+   <Attribute domain="Alter" extID="Alter" name="Alter" />
+ </IDFilter>
+</Query>
+
+---Result---
+
+Alter
+18.0
+27.0

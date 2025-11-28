@@ -1,0 +1,207 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>misbased-dw</groupId>
+        <artifactId>misbased-dw-core-parent</artifactId>
+        <version>2.1</version>
+        <relativePath>../misbased-dw-core-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>misbased-dw-query-solr</artifactId>
+    <properties>
+        <indexing-target.example-env>${project.build.directory}/indexing-env--${project.version}
+        </indexing-target.example-env>
+    </properties>
+    <repositories>
+        <repository>
+            <id>local-lib</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-query-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-query-model-sql</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-core-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-core-client-sql</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.uniwue.dw</groupId>
+            <artifactId>padawan-negation</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>jdk.tools</groupId>
+                    <artifactId>jdk.tools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-1.2-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-extraction</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-imports-app</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- add final jar to provided env -->
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <configuration>
+                            <target>
+                                <property name="mvn.jar.finalName"
+                                          value="${project.build.finalName}"/>
+                                <property name="mvn.dir.deploy"
+                                          value="${indexing-target.example-env}"/>
+                                <copy
+                                        file="/${project.build.directory}/${mvn.jar.finalName}.jar"
+                                        todir="${mvn.dir.deploy}"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>test-${project.version}</finalName>
+                        </configuration>
+
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <executions>
+                    <execution>
+                        <id>build-dw-indexing-app</id>
+                        <configuration>
+                            <finalName>TheDwIndexingApp-${project.version}</finalName>
+                            <!-- get all project dependencies -->
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <!-- MainClass in mainfest make a executable jar -->
+                            <archive>
+                                <manifest>
+                                    <mainClass>de.uniwue.dw.query.solr.preprocess.TheDWIndexingApp
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>build-dw-optimizing-app</id>
+                        <configuration>
+                            <finalName>TheDwOptimizingApp-${project.version}</finalName>
+                            <!-- get all project dependencies -->
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <!-- MainClass in mainfest make a executable jar -->
+                            <archive>
+                                <manifest>
+                                    <mainClass>de.uniwue.dw.query.solr.preprocess.TheDWOptimizingApp
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

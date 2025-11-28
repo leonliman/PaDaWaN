@@ -1,0 +1,9 @@
+<ImportConfig>
+	<Data Project="Herzkatheter">
+		<XML Dir="Herzkatheter/Dokumente" IDCSVFile="Herzkatheter_IDs.txt" >
+			<AcceptedExtIDs>
+				<ExtID Value="Befunddaten" IsRoot="true" />
+			</AcceptedExtIDs>
+		</XML>
+	</Data>
+</ImportConfig>

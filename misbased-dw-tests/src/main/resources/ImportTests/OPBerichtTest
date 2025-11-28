@@ -1,0 +1,7 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="ZSDOPBBERT" domain="OP_Bericht" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---

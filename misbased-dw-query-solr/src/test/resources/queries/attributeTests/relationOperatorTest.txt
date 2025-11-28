@@ -1,0 +1,26 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Protein (U)" contentOperator="LESS" desiredContent="50" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Protein (U)" contentOperator="MORE" desiredContent="30" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Protein (U)" contentOperator="MORE_OR_EQUAL" desiredContent="40" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Protein (U)" contentOperator="LESS_OR_EQUAL" desiredContent="60" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Protein (U)" contentOperator="EQUALS" desiredContent="50" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Protein (U)" contentOperator="BETWEEN" desiredContent="40;50" domain="labor" extID="protein__u__"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Protein (U) < 50	9
+Protein (U) > 30	12
+Protein (U) >= 40	12
+Protein (U) <= 60	15
+Protein (U) = 50	3
+Protein (U) ]40, 50]	4

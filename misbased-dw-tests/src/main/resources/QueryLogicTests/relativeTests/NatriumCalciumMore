@@ -1,0 +1,13 @@
+---Query---
+
+<Query>
+	<Attribute extID="0000000001" domain="Labor" elementID="Param1" />
+	<Attribute extID="0000000002" domain="Labor">
+		<ValueCompare refElemID="Param1" contentOperator="MORE" />
+	</Attribute>
+</Query>
+
+---Result---
+
+Natrium_g_dl	Calcium_g_dl
+15.0	100.0 | 120.0

@@ -1,0 +1,19 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionFilter>
+      <Attribute attrName="Aufnahme" contentOperator="BETWEEN" desiredContent="1.1.2016;1.2.2018" domain="stammdaten" extID="aufnahme"/>
+    </DistributionFilter>
+    <DistributionRow>
+      <Attribute attrName="Diagnose" domain="untersuchung" extID="diagnose"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Alle (Aufnahme ]1.1.2016, 1.2.2018])	Fälle
+Alle (Aufnahme ]1.1.2016, 1.2.2018])	5	5
+Diagnose	5	5

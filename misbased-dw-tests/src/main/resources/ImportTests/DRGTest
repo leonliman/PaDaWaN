@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="N60B" domain="DRG" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+N60B
+X

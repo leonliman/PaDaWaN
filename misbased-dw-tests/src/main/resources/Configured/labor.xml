@@ -1,0 +1,6 @@
+<ImportConfig Version="0.2">
+	<DataTable Project="Labor" ExtIDColumn="N2LEISTID" ValueColumn="N2VALUE" DocIDColumn="DOKNR" 
+	MeasureDateColumn="N2DATE" MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="N2TIME" MeasureTimeFormat="hhmmss">
+		<DataSourceCSVDir Dir="Labor" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

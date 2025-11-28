@@ -1,0 +1,28 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="LESS" desiredContent="70" domain="labor" extID="natrium_mmol_l" reductionOp="MAX"/>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="LESS_OR_EQUAL" desiredContent="70" domain="labor" extID="natrium_mmol_l" reductionOp="MAX"/>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="EQUALS" desiredContent="90" domain="labor" extID="natrium_mmol_l" reductionOp="MAX"/>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="MORE" desiredContent="50" domain="labor" extID="natrium_mmol_l" reductionOp="MAX"/>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="MORE_OR_EQUAL" desiredContent="50" domain="labor" extID="natrium_mmol_l" reductionOp="MAX"/>
+      <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+
+
+---Result---
+
+	Fälle
+Alle	19
+Natrium (mmol/l) - MAX < 70	7
+Natrium (mmol/l) - MAX <= 70	13
+Natrium (mmol/l) - MAX = 90	1
+Natrium (mmol/l) - MAX > 50	10
+Natrium (mmol/l) - MAX >= 50	13
+Natrium (mmol/l)	17

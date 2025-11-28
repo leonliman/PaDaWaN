@@ -1,0 +1,11 @@
+.project
+*.iml
+**/.project
+**/.classpath
+**/.settings
+**/pom.xml.versionsBackup
+**/tmp/**
+**/target/**
+**/bin/**
+**/.idea/**
+**/.DS_Store

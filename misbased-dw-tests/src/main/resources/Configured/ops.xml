@@ -1,0 +1,6 @@
+<ImportConfig Version="0.2">
+	<DataTable Project="Procedures" ExtIDColumn="ICPML" ValueColumn="ICPML" CaseIDColumn="pfalnr" 
+	MeasureDateColumn="BGDOP" MeasureDateFormat="dd.MM.yyyy" StornoColumn="STORN" UnknownExtIDEntryExtID="code_not_known">
+		<DataSourceCSVDir Dir="OPS" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

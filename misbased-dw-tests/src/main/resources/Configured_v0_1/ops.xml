@@ -1,0 +1,5 @@
+<ImportConfig>
+	<Data Project="Procedures">
+		<CSVData Dir="OPS" ExtIDColumn="ICPML" ValueColumn="ICPML" CaseIDColumn="pfalnr" MeasureDateColumn="BGDOP" MeasureDateFormat="dd.MM.yyyy" StornoColumn="STORN" UnknownExtIDEntryExtID="code_not_known" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>

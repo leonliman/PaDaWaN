@@ -1,0 +1,17 @@
+<ImportConfig>
+	<Catalog>
+		<Entry ExtID="Stammdaten" Name="Stammdaten" />
+	</Catalog>
+	<Catalog Project="FallArt" ParentExtID="Stammdaten" ParentProject="">
+		<Entry ExtID="FallArt" Name="FallArt" DataType="SingleChoice" />
+	</Catalog>
+	<Data Project="FallArt">
+		<CSVData Dir="Faelle" CaseIDColumn="pfalnr" Encoding="Windows-1252" >
+			<DataColumn ValueColumn="FALAR" ExtID="FallArt">
+				<ReplaceValue Value="1" Replacement="stationaer" />
+				<ReplaceValue Value="2" Replacement="ambulant" />
+				<ReplaceValue Value="3" Replacement="teilstationaer" />
+			</DataColumn>
+		</CSVData>
+	</Data>
+</ImportConfig>

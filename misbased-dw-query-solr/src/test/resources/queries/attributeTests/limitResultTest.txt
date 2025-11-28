@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="2">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="A30-A49 : Sonstige bakterielle Krankheiten" domain="diagnose" extID="a30_a49"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Aufnahme
+X
+X

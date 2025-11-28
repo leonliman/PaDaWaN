@@ -1,0 +1,5 @@
+<ImportConfig>
+	<Data Project="Diagnose">
+		<CSVData Dir="Diagnosen" ExtIDColumn="DKEY1~-~DKEY2~-~DKEY_REF" ValueColumn="DITXT" CaseIDColumn="PFALNR" MeasureDateColumn="DIADT" MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" UnknownExtIDEntryExtID="code_not_known" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>

@@ -1,0 +1,15 @@
+---Query---
+
+<Query>
+	<IDFilter filterIDType="CaseID">
+		<Attribute extID="0000000001" domain="Labor" elementID="Param1" />
+		<Attribute extID="0000000001" domain="Labor">
+			<ValueCompare refElemID="Param1" contentOperator="more" />
+		</Attribute>
+	</IDFilter>
+</Query>
+
+---Result---
+
+Natrium_g_dl	Natrium_g_dl
+10.0	20.0

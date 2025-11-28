@@ -1,0 +1,10 @@
+<ImportConfig Version="0.2">
+	<DataTable ExtIDColumn="ExtID" ProjectColumn="project" PIDColumn="pid" CaseIDColumn="caseID" DocIDColumn="ref" 
+	ValueColumn="value" MeasureTimestampColumn="measuretime" UseMetaData="false">
+		<DataSourceDatabase SQLServer="localhost" SQLDatabase="padawan_test" SQLUser="padawan_test" SQLPassword="padawan_test" TableName="Infos" RowIDColumn="InfoID"
+SelectString="
+select infoid, pid, caseid, ref, measuretime, project, extid, value 
+from dwinfo, DWCatalog 
+where DWInfo.AttrID = DWCatalog.AttrID and infoID &gt;= ? order by infoid" />
+	</DataTable>
+</ImportConfig>

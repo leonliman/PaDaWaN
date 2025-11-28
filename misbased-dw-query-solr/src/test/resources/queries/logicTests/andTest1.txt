@@ -1,0 +1,28 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <And>
+      <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l"/>
+      <Attribute attrName="Calcium (mmol/l)" domain="labor" extID="calcium_mmol_l"/>
+    </And>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+Natrium (mmol/l);Calcium (mmol/l)
+70.0 | 60.0 | 70.0 | 80.0 | 70.0;10.0 | 20.0 | 40.0 | 60.0 | 90.0
+70.0 | 60.0 | 70.0 | 80.0 | 70.0;10.0 | 20.0 | 40.0 | 60.0 | 90.0
+50.0;10.0
+70.0;10.0
+70.0 | 60.0;20.0 | 20.0 | 20.0
+20.0;20.0
+50.0 | 60.0 | 70.0;40.0 | 30.0 | 20.0
+40.0 | 40.0 | 40.0 | 40.0 | 40.0;80.0 | 80.0 | 80.0 | 80.0 | 80.0
+40.0;40.0
+50.0;40.0
+80.0;40.0
+80.0 | 90.0;40.0

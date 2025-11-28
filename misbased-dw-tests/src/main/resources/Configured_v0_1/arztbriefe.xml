@@ -1,0 +1,10 @@
+<ImportConfig>
+	<Catalog Project="Arztbriefe">
+		<Entry ExtID="Arztbriefe" Name="Arztbriefe">
+			<Entry ExtID="Brieftext" Name="Brieftext" DataType="Text" />
+		</Entry>
+	</Catalog>
+	<Data Project="Arztbriefe" >
+		<TextData Dir="Arztbriefe" ExtID="Brieftext" DocIDRegex="^(\d+)_.*" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>

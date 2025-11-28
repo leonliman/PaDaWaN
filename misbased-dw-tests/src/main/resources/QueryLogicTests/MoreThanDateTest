@@ -1,0 +1,11 @@
+---Query---
+
+<Query>
+    <Attribute extID="Aufnahme" domain="AufnahmeEntlassung" contentOperator="more" desiredContent="01.01.2010 00:00" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+Aufnahme
+X
+X

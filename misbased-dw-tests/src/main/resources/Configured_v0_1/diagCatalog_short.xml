@@ -1,0 +1,5 @@
+<ImportConfig >
+	<Catalog Project="Diagnose" Priority="10">
+		<CSVCatalog File="diagCatalog_short.csv" ExtIDColumn="ExtID" NameColumn="Name" ParentExtIDColumn="ParentExtID" DataTypeColumn="DataType" />
+	</Catalog>
+</ImportConfig>

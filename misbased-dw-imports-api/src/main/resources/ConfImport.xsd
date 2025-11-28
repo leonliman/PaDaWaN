@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <xs:element name="ImportConfig">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CatalogEntry" minOccurs="0" maxOccurs="unbounded" type="CatalogEntryType"/>
+                <xs:element name="CatalogTable" minOccurs="0" maxOccurs="unbounded" type="CatalogTableType"/>
+                <xs:element name="DataXML" minOccurs="0" maxOccurs="unbounded" type="DataXMLType"/>
+                <xs:element name="DataText" minOccurs="0" maxOccurs="unbounded" type="DataTextType"/>
+                <xs:element name="DataTable" minOccurs="0" maxOccurs="unbounded" type="DataTableType"/>
+                <xs:element name="MetaDataPatient" minOccurs="0" type="MetaDataPatientType"/>
+                <xs:element name="MetaDataCase" minOccurs="0" type="MetaDataCaseType"/>
+                <xs:element name="MetaDataDoc" minOccurs="0" type="MetaDataDocType"/>
+                <xs:element name="MetaDataMov" minOccurs="0" type="MetaDataMovType"/>
+            </xs:sequence>
+            <xs:attribute name="Version" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="DataSourceType">
+        <xs:attribute name="Encoding" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="DataSourceFilesystemType">
+        <xs:complexContent>
+            <xs:extension base="DataSourceType">
+                <xs:attribute name="Dir" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataSourceCSVDirType">
+        <xs:complexContent>
+            <xs:extension base="DataSourceFilesystemType">
+                <xs:attribute name="Delimiter" type="xs:string"/>
+                <xs:attribute name="QuoteMode" type="xs:string"/>
+                <xs:attribute name="QuoteChar" type="xs:string"/>
+                <xs:attribute name="EscapeChar" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataSourceCSVFileType">
+        <xs:complexContent>
+            <xs:extension base="DataSourceCSVDirType">
+                <xs:attribute name="File" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataSourceDatabaseType">
+        <xs:complexContent>
+            <xs:extension base="DataSourceType">
+                <xs:attribute name="SelectString" type="xs:string"/>
+                <xs:attribute name="SourceTable" type="xs:string"/>
+                <xs:attribute name="SourceHDPArea" type="xs:string"/>
+                <xs:attribute name="SourceHDPTable" type="xs:string"/>
+                <xs:attribute name="AlternativeMaxRecordIDTable" type="xs:string"/>
+                <xs:attribute name="Project" type="xs:string"/>
+                <xs:attribute name="RowIDColumn" type="xs:string"/>
+                <xs:attribute name="TimestampColumnName" type="xs:string"/>
+                <xs:attribute name="NameColumnName" type="xs:string"/>
+                <xs:attribute name="ContentColumnName" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="CatalogType">
+        <xs:sequence>
+            <xs:element name="CatalogEntry" minOccurs="0" maxOccurs="unbounded" type="CatalogEntryType"/>
+            <xs:element name="CatalogTable" minOccurs="0" maxOccurs="unbounded" type="CatalogTableType"/>
+        </xs:sequence>
+        <xs:attribute name="Project" type="xs:string"/>
+        <xs:attribute name="ParentExtID" type="xs:string"/>
+        <xs:attribute name="ParentProject" type="xs:string"/>
+        <xs:attribute name="Priority" type="xs:integer"/>
+    </xs:complexType>
+
+    <xs:complexType name="CatalogTableType">
+        <xs:complexContent>
+            <xs:extension base="CatalogType">
+                <xs:sequence>
+                    <xs:element name="DataSourceCSVFile" minOccurs="0" maxOccurs="unbounded"
+                                type="DataSourceCSVFileType"/>
+                    <xs:element name="DataSourceDatabase" minOccurs="0" maxOccurs="unbounded"
+                                type="DataSourceDatabaseType"/>
+                </xs:sequence>
+                <xs:attribute name="ExtIDColumn" type="xs:string"/>
+                <xs:attribute name="ProjectColumn" type="xs:string"/>
+                <xs:attribute name="AttrIDColumn" type="xs:string"/>
+                <xs:attribute name="ParentExtIDColumn" type="xs:string"/>
+                <xs:attribute name="ParentProjectColumn" type="xs:string"/>
+                <xs:attribute name="ParentAttrIDColumn" type="xs:string"/>
+                <xs:attribute name="NameColumn" type="xs:string"/>
+                <xs:attribute name="DescriptionColumn" type="xs:string"/>
+                <xs:attribute name="OrderValueColumn" type="xs:string"/>
+                <xs:attribute name="UniqueNameColumn" type="xs:string"/>
+                <xs:attribute name="DataTypeColumn" type="xs:string"/>
+                <xs:attribute name="UnitColumn" type="xs:string"/>
+                <xs:attribute name="LowerBoundColumn" type="xs:string"/>
+                <xs:attribute name="UpperBoundColumn" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="CatalogEntryType">
+        <xs:complexContent>
+            <xs:extension base="CatalogType">
+                <xs:attribute name="ExtID" type="xs:string"/>
+                <xs:attribute name="Name" type="xs:string"/>
+                <xs:attribute name="DataType" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataType" abstract="true">
+        <xs:sequence>
+            <xs:element name="DataSourceFilesystem" minOccurs="0" maxOccurs="unbounded"
+                        type="DataSourceFilesystemType"/>
+            <xs:element name="DataSourceCSVDir" minOccurs="0" maxOccurs="unbounded" type="DataSourceCSVDirType"/>
+            <xs:element name="DataSourceDatabase" minOccurs="0" maxOccurs="unbounded" type="DataSourceDatabaseType"/>
+        </xs:sequence>
+        <xs:attribute name="Project" type="xs:string"/>
+        <xs:attribute name="RootName" type="xs:string"/>
+        <xs:attribute name="RootExtID" type="xs:string"/>
+        <xs:attribute name="RootProject" type="xs:string"/>
+        <xs:attribute name="UseMetaData" type="xs:boolean"/>
+        <xs:attribute name="Priority" type="xs:integer"/>
+    </xs:complexType>
+
+    <xs:complexType name="MetaDataPatientType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:attribute name="PIDColumn" type="xs:string"/>
+                <xs:attribute name="YOBColumn" type="xs:string"/>
+                <xs:attribute name="YOBRegex" type="xs:string"/>
+                <xs:attribute name="SexColumn" type="xs:string"/>
+                <xs:attribute name="StornoColumn" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="MetaDataCaseType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:attribute name="PIDColumn" type="xs:string"/>
+                <xs:attribute name="CaseIDColumn" type="xs:string"/>
+                <xs:attribute name="CreationTimestampColumn" type="xs:string"/>
+                <xs:attribute name="CreationTimestampFormat" type="xs:string"/>
+                <xs:attribute name="CreationDateColumn" type="xs:string"/>
+                <xs:attribute name="CreationDateFormat" type="xs:string"/>
+                <xs:attribute name="CreationTimeColumn" type="xs:string"/>
+                <xs:attribute name="CreationTimeFormat" type="xs:string"/>
+                <xs:attribute name="CaseTypeColumn" type="xs:string"/>
+                <xs:attribute name="StornoColumn" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="MetaDataDocType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:attribute name="PIDColumn" type="xs:string"/>
+                <xs:attribute name="CaseIDColumn" type="xs:string"/>
+                <xs:attribute name="DocIDColumn" type="xs:string"/>
+                <xs:attribute name="TimestampColumn" type="xs:string"/>
+                <xs:attribute name="TimestampFormat" type="xs:string"/>
+                <xs:attribute name="DateColumn" type="xs:string"/>
+                <xs:attribute name="DateFormat" type="xs:string"/>
+                <xs:attribute name="TimeColumn" type="xs:string"/>
+                <xs:attribute name="TimeFormat" type="xs:string"/>
+                <xs:attribute name="StornoColumn" type="xs:string"/>
+                <xs:attribute name="DocTypeColumn" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="MetaDataMovType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:attribute name="CaseIDColumn" type="xs:string"/>
+                <xs:attribute name="FromTimestampColumn" type="xs:string"/>
+                <xs:attribute name="FromTimestampFormat" type="xs:string"/>
+                <xs:attribute name="FromDateColumn" type="xs:string"/>
+                <xs:attribute name="FromDateFormat" type="xs:string"/>
+                <xs:attribute name="FromTimeColumn" type="xs:string"/>
+                <xs:attribute name="FromTimeFormat" type="xs:string"/>
+                <xs:attribute name="EndTimestampColumn" type="xs:string"/>
+                <xs:attribute name="EndTimestampFormat" type="xs:string"/>
+                <xs:attribute name="EndDateColumn" type="xs:string"/>
+                <xs:attribute name="EndDateFormat" type="xs:string"/>
+                <xs:attribute name="EndTimeColumn" type="xs:string"/>
+                <xs:attribute name="EndTimeFormat" type="xs:string"/>
+                <xs:attribute name="MoveTypeColumn" type="xs:string"/>
+                <xs:attribute name="StornoColumn" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataTextType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:attribute name="PIDRegex" type="xs:string"/>
+                <xs:attribute name="CaseIDRegex" type="xs:string"/>
+                <xs:attribute name="DocIDRegex" type="xs:string"/>
+                <xs:attribute name="ExtID" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="DataXMLType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:sequence>
+                    <xs:element name="AcceptedExtIDs" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ExtID" minOccurs="0" maxOccurs="unbounded"
+                                            type="XMLExtIDType"></xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RejectedExtIDs" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ExtID" minOccurs="0" maxOccurs="unbounded"
+                                            type="XMLExtIDType"></xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:attribute name="PIDRegex" type="xs:string"/>
+                <xs:attribute name="CaseIDRegex" type="xs:string"/>
+                <xs:attribute name="DocIDRegex" type="xs:string"/>
+                <xs:attribute name="IDCSVFile" type="xs:string"/>
+                <xs:attribute name="ParentExtID" type="xs:string"/>
+                <xs:attribute name="ParentProject" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="XMLExtIDType">
+        <xs:attribute name="Value" type="xs:string"/>
+        <xs:attribute name="IsRoot" type="xs:string"/>
+        <xs:attribute name="ImportText" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="DataTableType">
+        <xs:complexContent>
+            <xs:extension base="DataType">
+                <xs:sequence>
+                    <xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:attribute name="FilterColumn" type="xs:string"/>
+                            <xs:attribute name="FilterValue" type="xs:string"/>
+                            <xs:attribute name="IsRegex" type="xs:boolean"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DataColumn" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="ReplaceValue" minOccurs="0" maxOccurs="unbounded">
+                                    <xs:complexType>
+                                        <xs:attribute name="Value" type="xs:string"/>
+                                        <xs:attribute name="Replacement" type="xs:string"/>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="ExtID" type="xs:string"/>
+                            <xs:attribute name="IsExtIDColumn" type="xs:boolean"/>
+                            <xs:attribute name="ValueColumn" type="xs:string"/>
+                            <xs:attribute name="TimestampFormat" type="xs:string"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AllColumns" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:attribute name="TimestampFormat" type="xs:string"/>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:attribute name="PIDColumn" type="xs:string"/>
+                <xs:attribute name="CaseIDColumn" type="xs:string"/>
+                <xs:attribute name="DocIDColumn" type="xs:string"/>
+                <xs:attribute name="GroupIDColumn" type="xs:string"/>
+                <xs:attribute name="RefIDColumn" type="xs:string"/>
+                <xs:attribute name="Special" type="xs:string"/>
+                <xs:attribute name="ExtIDColumn" type="xs:string"/>
+                <xs:attribute name="ExtIDRegex" type="xs:string"/>
+                <xs:attribute name="ProjectColumn" type="xs:string"/>
+                <xs:attribute name="ValueColumn" type="xs:string"/>
+                <xs:attribute name="MeasureTimestampColumn" type="xs:string"/>
+                <xs:attribute name="MeasureTimestampFormat" type="xs:string"/>
+                <xs:attribute name="MeasureDateColumn" type="xs:string"/>
+                <xs:attribute name="MeasureDateFormat" type="xs:string"/>
+                <xs:attribute name="MeasureTimeColumn" type="xs:string"/>
+                <xs:attribute name="MeasureTimeFormat" type="xs:string"/>
+                <xs:attribute name="StornoColumn" type="xs:string"/>
+                <xs:attribute name="UnknownExtIDEntryExtID" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

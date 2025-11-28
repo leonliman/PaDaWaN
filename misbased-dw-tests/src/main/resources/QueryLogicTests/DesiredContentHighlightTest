@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute alias="Param1" extID="Brieftext" domain="Arztbriefe" contentOperator="contains" desiredContent="Lungenrundherden" />
+</Query>
+
+---Result---
+
+Brieftext
+kutivem Zwerchfellhochstand re., kein Nachweis von >>Lungenrundherden<< auf der li. Seite, kein Nachweis einer mediastinal

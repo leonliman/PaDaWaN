@@ -1,0 +1,8 @@
+<ImportConfig Version="0.2">
+	<DataXML Project="Herzkatheter" IDCSVFile="Herzkatheter_IDs.txt" >
+		<DataSourceFilesystem Dir="Herzkatheter/Dokumente" />
+		<AcceptedExtIDs>
+			<ExtID Value="Befunddaten" IsRoot="true" />
+		</AcceptedExtIDs>
+	</DataXML>
+</ImportConfig>

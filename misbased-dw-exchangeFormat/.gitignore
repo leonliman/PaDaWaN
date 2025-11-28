@@ -1,0 +1,6 @@
+/target/
+/ids.csv
+/infos.csv
+/topAttributesResult.csv
+/gen
+src/main/resources/ElasticSearchTest.props

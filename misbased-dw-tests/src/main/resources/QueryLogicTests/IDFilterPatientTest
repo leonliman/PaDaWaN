@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="0000000002" domain="Labor" reductionOp="letzter Wert" />
+</Query>
+
+---Result---
+
+calcium_g_dl
+15.0

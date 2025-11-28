@@ -1,0 +1,16 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="CaseID">
+        <And>
+	        <Attribute extID="0000002153" domain="Labor" infoDate="true" />
+	        <Attribute extID="0000000001" domain="Labor" reductionOp="letzter Wert" caseID="true"/>
+	        <Attribute extID="0000000002" domain="Labor" reductionOp="letzter Wert" docID="true"/>
+	    </And>
+    </IDFilter>    
+</Query>
+
+---Result---
+
+H_moglobin_g_dl	H_moglobin_g_dl_time	Natrium_g_dl	Natrium_g_dl_case	Calcium_g_dl	Calcium_g_dl_docID
+11.3	29.05.2009 19:46:25	15.0	1102	100.0	1205

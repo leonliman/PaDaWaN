@@ -1,0 +1,13 @@
+---Query---
+
+<Query pid="true">
+    <IDFilter filterIDType="PID">
+    	<ID value="1002" />
+	    <Attribute extID="0000000002" domain="Labor" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+pid	Calcium_g_dl
+1002	100.0 | 120.0 | 5.0 | 15.0

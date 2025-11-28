@@ -1,0 +1,7 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry ExtID="Stammdaten" Name="Stammdaten" />
+	<CatalogEntry Project="Geschlecht" ParentExtID="Stammdaten" ParentProject="" ExtID="Geschlecht" Name="Geschlecht" DataType="SingleChoice" />
+	<DataTable Project="Geschlecht" CaseIDColumn="pfalnr" Special="Geschlecht">
+		<DataSourceCSVDir Dir="Faelle" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

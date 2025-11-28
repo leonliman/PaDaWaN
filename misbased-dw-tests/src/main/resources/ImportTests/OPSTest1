@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="8-522.D0" domain="Procedures" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+8-522.D0
+X

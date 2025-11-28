@@ -1,0 +1,53 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry Project="Diagnose" ExtID="Diagnose" />
+	<CatalogEntry Project="Diagnose" ParentExtID="Diagnose" ParentProject="Diagnose" ExtID="DiagnoseTyp" Name="DiagnoseTyp" DataType="Structure" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Einweisungs-Diagnose" Name="Einweisungs-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Behandlungs-Diagnose" Name="Behandlungs-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Aufnahme-Diagnose" Name="Aufnahme-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Entlass-Diagnose" Name="Entlass-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Fach-Haupt-Diagnose" Name="Fach-Haupt-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="KH-Haupt-Diagnose" Name="KH-Haupt-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="OP-Diagnose" Name="OP-Diagnose" DataType="Bool" />
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="EWDIA" FilterValue="X" />
+		<DataColumn ExtID="Einweisungs-Diagnose" ValueColumn="EWDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="BHDIA" FilterValue="X" />
+		<DataColumn ExtID="Behandlungs-Diagnose" ValueColumn="BHDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="AFDIA" FilterValue="X" />
+		<DataColumn ExtID="Aufnahme-Diagnose" ValueColumn="AFDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="ENDIA" FilterValue="X" />
+		<DataColumn ExtID="Entlass-Diagnose" ValueColumn="ENDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="FHDIA" FilterValue="X" />
+		<DataColumn ExtID="Fach-Haupt-Diagnose" ValueColumn="FHDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="KHDIA" FilterValue="X" />
+		<DataColumn ExtID="KH-Haupt-Diagnose" ValueColumn="KHDIA" />
+	</DataTable>
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" GroupIDColumn="LFDNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<Filter FilterColumn="OPDIA" FilterValue="X" />
+		<DataColumn ExtID="OP-Diagnose" ValueColumn="OPDIA" />
+	</DataTable>
+</ImportConfig>

@@ -1,0 +1,19 @@
+---Query---
+
+<Query>
+  <IDFilter filterIDType="CaseID">
+    <DistributionFilter>
+      <And>
+        <Attribute attrName="Aufnahme" domain="stammdaten" extID="aufnahme"/>
+        <Attribute attrName="Entlassung" domain="stammdaten" extID="entlassung"/>
+      </And>
+    </DistributionFilter>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+;Alle (Aufnahme AND Entlassung);Fälle
+Alle (Aufnahme AND Entlassung);7;7
+

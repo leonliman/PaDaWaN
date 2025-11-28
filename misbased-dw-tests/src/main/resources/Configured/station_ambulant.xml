@@ -1,0 +1,6 @@
+<ImportConfig Version="0.2">
+	<DataTable Project="Station" ExtIDColumn="ORGPF" CaseIDColumn="FALNR">
+		<DataSourceCSVDir Dir="Bewegungen" Encoding="Windows-1252" />
+		<Filter FilterColumn="BEWTY" FilterValue="4" />
+	</DataTable>
+</ImportConfig>

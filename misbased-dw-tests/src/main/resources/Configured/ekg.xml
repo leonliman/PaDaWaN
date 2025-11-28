@@ -1,0 +1,8 @@
+<ImportConfig Version="0.2">
+	<DataXML Project="EKG">
+		<DataSourceFilesystem Dir="EKG/Dokumente" />
+		<AcceptedExtIDs>
+			<ExtID Value="Befunddaten" ImportText="true" />
+		</AcceptedExtIDs>
+	</DataXML>
+</ImportConfig>

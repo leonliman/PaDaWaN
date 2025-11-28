@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="ImportLog" fileName="../log/import_log.log" append="false">
+			<PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+		</File>
+		<File name="ErrorFileLog" fileName="../log/error_log.log" append="false">
+			<PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+		</File>
+		<Console name="syserr" target="SYSTEM_ERR">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<Console name="syso" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="DW-Imperator" level="TRACE" additivity="false">
+			<AppenderRef ref="ImportLog" />
+			<AppenderRef ref="syso" />
+		</Logger>
+		<Logger name="DW-Import-Manager" level="TRACE" additivity="false">
+			<AppenderRef ref="ImportLog" />
+			<AppenderRef ref="syso" />
+		</Logger>
+		<Logger name="DW-Import-Trooper" level="INFO" additivity="false">
+			<AppenderRef ref="ImportLog" />
+			<AppenderRef ref="syso" />
+		</Logger>
+		<Logger name="DW-DatabaseManager" level="INFO" additivity="false">
+			<AppenderRef ref="ImportLog" />
+			<AppenderRef ref="syso" />
+		</Logger>
+		<Root level="ERROR">
+			<AppenderRef ref="ErrorFileLog" />
+			<AppenderRef ref="syserr" />
+		</Root>
+	</Loggers>
+</Configuration>

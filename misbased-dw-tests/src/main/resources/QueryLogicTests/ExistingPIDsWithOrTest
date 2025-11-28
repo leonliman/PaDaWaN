@@ -1,0 +1,16 @@
+---Query---
+
+<Query pid="true">
+    <IDFilter filterIDType="PID">
+    	<ID value="1002" time="15.06.2009 19:46:25" />
+    	<Or>
+		    <Attribute alias="Param1" extID="0000000002" domain="Labor"/>
+	        <Attribute alias="Param2" extID="0000002153" domain="Labor" reductionOp="letzter Wert"/>
+    	</Or>
+    </IDFilter>
+</Query>
+
+---Result---
+
+pid	Calcium_g_dl	H_moglobin_g_dl
+1002	100.0	

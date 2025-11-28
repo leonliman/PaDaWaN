@@ -1,0 +1,18 @@
+---Query---
+
+<Query pid="TRUE" >
+	<IDFilter filterIDType="CaseID" distinct="FALSE">
+    	<Attribute extID="Erste Bewegung" domain="AufnahmeEntlassung" onlyDisplayExistence="true"/>
+	    <Attribute extID="Letzte Bewegung" domain="AufnahmeEntlassung" onlyDisplayExistence="true" reductionOp="letzter Wert" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+AufnahmeEntlassung_first	AufnahmeEntlassung_last	pid
+X	X	1001
+X	X	1001
+X	X	1001
+X	X	1002
+X	X	1002
+X	X	1002

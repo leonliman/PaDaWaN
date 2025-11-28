@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="Typ" domain="Arztbriefe"/>
+</Query>
+
+---Result---
+
+Typ
+A

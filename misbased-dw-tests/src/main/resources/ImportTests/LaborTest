@@ -1,0 +1,11 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="0000002153" domain="Labor" />
+</Query>
+
+---Result---
+
+H_moglobin_g_dl
+11.3
+13.8

@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="Befunddaten" domain="EKG" onlyDisplayExistence="true" />
+</Query>
+
+---Result---
+
+Befundtext
+X

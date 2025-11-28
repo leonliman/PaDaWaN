@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="Brieftext" domain="Arztbriefe" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+Arztbriefe
+X

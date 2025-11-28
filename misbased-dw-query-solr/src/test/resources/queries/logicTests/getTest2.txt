@@ -1,0 +1,25 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Calcium (mmol/l)" domain="labor" extID="calcium_mmol_l"/>
+      <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l"/>
+      <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l"/>
+      <Attribute attrName="Protein (U)" domain="labor" extID="protein__u__"/>
+      <Attribute attrName="Monozyten (%)" domain="labor" extID="monozyten__"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Calcium (mmol/l)	13
+Natrium (mmol/l)	17
+Kalium (mmol/l)	16
+Protein (U)	19
+Monozyten (%)	17
+

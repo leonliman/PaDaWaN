@@ -1,0 +1,16 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Aufnahme" contentOperator="MORE" desiredContent="1.1.2015" domain="stammdaten" extID="aufnahme"/>
+    <Attribute attrName="Entlassung" contentOperator="MORE_OR_EQUAL" desiredContent="24.12.2015" domain="stammdaten" extID="entlassung"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Aufnahme > 1.1.2015	Entlassung >= 24.12.2015
+01.01.2016 12:12:12	01.01.2016 12:12:12
+01.01.2016 12:12:12	01.01.2016 12:12:12
+01.01.2016 12:12:12	01.08.2016 12:12:12

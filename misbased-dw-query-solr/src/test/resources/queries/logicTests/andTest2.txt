@@ -1,0 +1,23 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <And>
+        <Attribute attrName="Natrium (mmol/l)" contentOperator="MORE" desiredContent="60" domain="labor" extID="natrium_mmol_l"/>
+        <Attribute attrName="Calcium (mmol/l)" contentOperator="MORE" desiredContent="60" domain="labor" extID="calcium_mmol_l"/>
+      </And>
+      <Attribute attrName="Calcium (mmol/l)" contentOperator="MORE" desiredContent="60" domain="labor" extID="calcium_mmol_l"/>
+      <Attribute attrName="Natrium (mmol/l)" contentOperator="MORE" desiredContent="60" domain="labor" extID="natrium_mmol_l"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Natrium (mmol/l) > 60 AND Calcium (mmol/l) > 60	2
+Calcium (mmol/l) > 60	3
+Natrium (mmol/l) > 60	10

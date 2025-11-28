@@ -1,0 +1,17 @@
+CR#preselect
+CT
+DX#preselect
+IO
+MG
+MR
+NM
+OT
+PT
+RF
+RG
+OCT
+US
+XA
+XC
+ES
+ECG

@@ -1,0 +1,7 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry Project="Arztbriefe" ExtID="Arztbriefe" Name="Arztbriefe" />
+	<CatalogEntry Project="Arztbriefe" ExtID="Brieftext" ParentExtID="Arztbriefe" ParentProject="Arztbriefe" Name="Brieftext" DataType="Text" />
+	<DataText Project="Arztbriefe" ExtID="Brieftext" DocIDRegex="^(\d+)_.*">
+		<DataSourceFilesystem Dir="Arztbriefe" Encoding="Windows-1252" />
+	</DataText>
+</ImportConfig>

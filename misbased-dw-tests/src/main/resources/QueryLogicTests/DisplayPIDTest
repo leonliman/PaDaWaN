@@ -1,0 +1,11 @@
+---Query---
+
+<Query pid="TRUE">
+    <Attribute alias="Param1" extID="0000000001" domain="Labor" displayValue="FALSE" reductionOp="letzter Wert" />
+</Query>
+
+---Result---
+
+pid
+1001
+1002

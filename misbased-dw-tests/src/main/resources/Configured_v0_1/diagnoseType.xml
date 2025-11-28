@@ -1,0 +1,22 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry Project="Diagnose" ExtID="Diagnose" />
+	<CatalogEntry Project="Diagnose" ParentExtID="Diagnose" ParentProject="Diagnose" ExtID="DiagnoseTyp" Name="DiagnoseTyp" DataType="Structure" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Einweisungs-Diagnose" Name="Einweisungs-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Behandlungs-Diagnose" Name="Behandlungs-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Aufnahme-Diagnose" Name="Aufnahme-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Entlass-Diagnose" Name="Entlass-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="Fach-Haupt-Diagnose" Name="Fach-Haupt-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="KH-Haupt-Diagnose" Name="KH-Haupt-Diagnose" DataType="Bool" />
+	<CatalogEntry Project="Diagnose" ParentExtID="DiagnoseTyp" ParentProject="Diagnose" ExtID="OP-Diagnose" Name="OP-Diagnose" DataType="Bool" />
+	<DataTable Project="Diagnose" CaseIDColumn="PFALNR" MeasureDateColumn="DIADT" 
+	MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" >
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+		<DataColumn ExtID="Einweisungs-Diagnose" ValueColumn="EWDIA" />
+		<DataColumn ExtID="Behandlungs-Diagnose" ValueColumn="BHDIA" />
+		<DataColumn ExtID="Aufnahme-Diagnose" ValueColumn="AFDIA" />
+		<DataColumn ExtID="Entlass-Diagnose" ValueColumn="ENDIA" />
+		<DataColumn ExtID="Fach-Haupt-Diagnose" ValueColumn="FHDIA" />
+		<DataColumn ExtID="KH-Haupt-Diagnose" ValueColumn="KHDIA" />
+		<DataColumn ExtID="OP-Diagnose" ValueColumn="OPDIA" />
+	</DataTable>
+</ImportConfig>

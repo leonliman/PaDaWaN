@@ -1,0 +1,15 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" extractionMode="BetweenHits" contentOperator="CONTAINS" desiredContent="[Herr Herrn]" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS [Herr Herrn]
+>>Herr<< Kollege,    wir berichten über >>Herrn<<
+>>Herr<< Kollege,    wir berichten über >>Herrn<<
+>>Herr<< Kollege,    wir berichten über >>Herrn<<

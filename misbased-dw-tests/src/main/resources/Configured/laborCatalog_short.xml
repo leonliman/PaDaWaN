@@ -1,0 +1,6 @@
+<ImportConfig Version="0.2">
+	<CatalogTable Project="Labor" Priority="10" ExtIDColumn="ExtID" NameColumn="Name" 
+	ParentExtIDColumn="ParentExtID" DataTypeColumn="DataType" UnitColumn="Unit" LowerBoundColumn="LowerBound" UpperBoundColumn="UpperBound">
+		<DataSourceCSVFile File="laborCatalog_short.csv" />
+	</CatalogTable>
+</ImportConfig>

@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="10">
+	<IDFilter filterIDType="CaseID" distinct="False">
+    	<Attribute extID="FallArt" domain="FallArt" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+FallArt
+ambulant
+ambulant
+ambulant
+ambulant
+stationaer
+stationaer

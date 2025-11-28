@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" extractionMode="BetweenHits" contentOperator="CONTAINS" desiredContent="[Hinweis Infektion]" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS [Hinweis Infektion]
+>>Hinweis<< auf chronische >>Infektion<<
+>>Hinweis<< auf chronische >>Infektion<<

@@ -1,0 +1,26 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>misbased-dw</groupId>
+    <artifactId>padawan</artifactId>
+    <version>2.1</version>
+
+    <name>Research Data Warehouse - PaDaWaN</name>
+    <packaging>pom</packaging>
+    <modules>
+        <module>misbased-dw-core-parent</module>
+        <module>misbased-dw-core-util</module>
+        <module>misbased-dw-core-client</module>
+        <module>misbased-dw-query-model</module>
+        <module>misbased-dw-query-sql</module>
+        <module>misbased-dw-imports-api</module>
+        <module>misbased-dw-query-solr</module>
+        <module>misbased-dw-imports-app</module>
+        <module>misbased-dw-core-client-sql</module>
+        <module>misbased-dw-imports-api-sql</module>
+        <module>misbased-dw-query-model-sql</module>
+        <module>misbased-dw-exchangeFormat</module>
+        <module>misbased-dw-tests</module>
+        <module>misbased-dw-ui</module>
+    </modules>
+</project>

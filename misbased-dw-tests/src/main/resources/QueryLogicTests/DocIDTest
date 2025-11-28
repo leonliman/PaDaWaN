@@ -1,0 +1,11 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="0000002153" domain="Labor" onlyDisplayExistence="true" docID="true"/>
+</Query>
+
+---Result---
+
+H_moglobin_g_dl	DocID
+X	1201
+X	1205

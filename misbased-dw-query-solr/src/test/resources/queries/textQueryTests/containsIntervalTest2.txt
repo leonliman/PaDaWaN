@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="[3 die der]" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS [3 die der]
+lich. Wir haben in anonymisierter Form Meldung an >>die<< Arzneimittelkommission >>der<< deutschen Ärzteschaft
+lich. Wir haben in anonymisierter Form Meldung an >>die<< Arzneimittelkommission >>der<< deutschen Ärzteschaft

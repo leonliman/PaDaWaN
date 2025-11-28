@@ -1,0 +1,13 @@
+---Query---
+
+<Query limitResult="10">
+	<IDFilter filterIDType="CaseID">
+    	<Attribute alias="Param1" extID="0000000002" name="Calcium" domain="Labor" reductionOp="max. Wert"/>
+    </IDFilter>
+</Query>
+
+---Result---
+
+Calcium_g_dl
+100.0
+120.0

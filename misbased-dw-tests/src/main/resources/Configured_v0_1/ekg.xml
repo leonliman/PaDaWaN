@@ -1,0 +1,9 @@
+<ImportConfig>
+	<Data Project="EKG">
+		<XML Dir="EKG/Dokumente">
+			<AcceptedExtIDs>
+				<ExtID Value="Befunddaten" ImportText="true" />
+			</AcceptedExtIDs>
+		</XML>
+	</Data>
+</ImportConfig>

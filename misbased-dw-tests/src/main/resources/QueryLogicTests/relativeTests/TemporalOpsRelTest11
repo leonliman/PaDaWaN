@@ -1,0 +1,27 @@
+<!-- ambulante Behandlung, danach eine von zwei Diagnosen und Haemoglobin gemessen -->
+
+---Query---
+<Query onlyCount="true">
+	<IDFilter filterIDType="CaseID">
+		<Attribute elementID="Param1" extID="fallart" domain="fallart"/>
+		
+		<Or> <!-- Diagnosen -->
+			<Attribute extID="s93_48" domain="diagnose" onlyDisplayExistence="true">
+				<TempOpRel refElemID="Param1" after="true"/>
+			</Attribute>
+			
+			<Attribute extID="s42_21" domain="diagnose" onlyDisplayExistence="true">
+				<TempOpRel refElemID="Param1" after="true"/>
+			</Attribute>
+		</Or>
+		
+		
+		<Attribute extID="0000002153" domain="labor" >		<!-- Haemoglobin -->
+			<TempOpRel refElemID="Param1" after="true" />
+		</Attribute>
+	</IDFilter>
+</Query>
+
+---Result---
+Count
+2

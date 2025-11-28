@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="0000000003" domain="Labor" />
+</Query>
+
+---Result---
+
+Unobtanium_g_dl
+1.0

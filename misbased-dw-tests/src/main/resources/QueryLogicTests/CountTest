@@ -1,0 +1,12 @@
+---Query---
+
+<Query onlyCount="true" limitResult="10">
+	<IDFilter filterIDType="CaseID" distinct="false">
+    	<Attribute alias="Param1" extID="Alter" domain="Alter" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+count
+6

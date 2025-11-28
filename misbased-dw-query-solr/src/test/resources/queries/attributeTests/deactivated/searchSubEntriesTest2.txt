@@ -1,0 +1,12 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Diagnose" domain="untersuchung" extID="diagnose" searchSubEntries="false"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Diagnose

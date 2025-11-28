@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="Gestorben" domain="Gestorben" onlyDisplayExistence="true" infoDate="true"/>
+</Query>
+
+---Result---
+
+Gestorben	Gestorben_time
+X	30.01.2009 14:35:46

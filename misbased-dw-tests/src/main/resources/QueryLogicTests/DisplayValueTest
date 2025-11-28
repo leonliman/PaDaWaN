@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="10">
+    <And>
+        <Attribute extID="0000000001" domain="Labor" reductionOp="letzter Wert" />
+        <Attribute extID="0000002153" domain="Labor" displayValue="false" />
+    </And>
+</Query>
+
+---Result---
+
+Natrium_g_dl
+15.0
+20.0

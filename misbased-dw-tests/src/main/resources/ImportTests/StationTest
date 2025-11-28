@@ -1,0 +1,13 @@
+---Query---
+
+<Query pid="TRUE" limitResult="10">
+    <IDFilter filterIDType="CaseID">
+	    <Attribute extID="00032121" domain="Station" onlyDisplayExistence="TRUE" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+pid	00032121
+1001	X
+1001	X

@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="Ebstein-Barr-Virus" extractionMode="NextNumber" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS Ebstein-Barr-Virus
+1
+1

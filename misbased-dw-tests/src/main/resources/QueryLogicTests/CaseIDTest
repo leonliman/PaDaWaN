@@ -1,0 +1,12 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="CaseID">
+        <Attribute extID="Gestorben" domain="Gestorben" onlyDisplayExistence="true" caseID="true"/>
+    </IDFilter>
+</Query>
+
+---Result---
+
+Gestorben	caseID
+X	1101

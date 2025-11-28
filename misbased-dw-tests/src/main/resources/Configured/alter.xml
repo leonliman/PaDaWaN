@@ -1,0 +1,7 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry ExtID="Stammdaten" Name="Stammdaten" />
+	<CatalogEntry Project="Alter" ParentExtID="Stammdaten" ParentProject="" ExtID="Alter" Name="Alter" DataType="Number" />
+	<DataTable Project="Alter" CaseIDColumn="pfalnr" Special="Alter">
+		<DataSourceCSVDir Dir="Faelle" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

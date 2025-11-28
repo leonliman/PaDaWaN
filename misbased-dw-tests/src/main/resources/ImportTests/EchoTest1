@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="CaseID">
+        <Attribute extID="Befund" domain="Echo" onlyDisplayExistence="true" />
+    </IDFilter>        
+</Query>
+
+---Result---
+
+Befund
+X
+X
+X

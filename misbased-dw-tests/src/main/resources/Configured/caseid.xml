@@ -1,0 +1,8 @@
+<ImportConfig Version="0.2">
+	<CatalogEntry ExtID="MetaDaten" Name="MetaDaten" />
+	<CatalogEntry Project="MetaDaten" ParentExtID="MetaDaten" ExtID="CaseID" Name="CaseID" DataType="Text" />
+	<DataTable Project="MetaDaten" CaseIDColumn="pfalnr">
+		<DataSourceCSVDir Dir="Faelle" Encoding="Windows-1252" />
+		<DataColumn ExtID="CaseID" ValueColumn="pfalnr" />
+	</DataTable>
+</ImportConfig>

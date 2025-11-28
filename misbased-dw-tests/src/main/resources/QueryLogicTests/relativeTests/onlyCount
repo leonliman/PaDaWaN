@@ -1,0 +1,14 @@
+---Query---
+
+<Query onlyCount="true">
+	<Attribute extID="0000000001" domain="Labor" elementID="Param1" />
+	<Attribute extID="0000000001" domain="Labor">
+		<ValueCompare refElemID="Param1" contentOperator="equals" />
+	</Attribute>
+</Query>
+
+---Result---
+
+Count
+2
+

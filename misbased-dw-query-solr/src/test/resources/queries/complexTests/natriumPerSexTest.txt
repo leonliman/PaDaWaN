@@ -1,0 +1,21 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l"/>
+    </DistributionRow>
+    <DistributionColumn>
+      <Attribute attrName="Geschlecht" contentOperator="EQUALS" desiredContent="W" domain="stammdaten" extID="geschlecht"/>
+      <Attribute attrName="Geschlecht" contentOperator="EQUALS" desiredContent="M" domain="stammdaten" extID="geschlecht"/>
+    </DistributionColumn>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+;Fälle;Ges:Geschlecht=W;Geschlecht=M;Summe;Doppelte
+Alle;10;6;5;11;1
+Natrium (mmol/l);9;5;5;10;1

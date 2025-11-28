@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="20">
+  <IDFilter filterIDType="CaseID" distinct="FALSE">
+    <Attribute domain="Alter" extID="Alter" name="Alter" reductionOp="Max"/>
+  </IDFilter>
+</Query>
+
+---Result---
+
+Alter
+18.0
+20.0
+21.0
+27.0
+28.0
+29.0

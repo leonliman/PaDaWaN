@@ -1,0 +1,13 @@
+---Query---
+
+<Query pid="true">
+    <IDFilter filterIDType="Year">
+    	<ID time="01.01.2009" />
+	    <Attribute extID="0000000002" domain="Labor" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+Calcium_g_dl	pid
+100.0 | 120.0	1002

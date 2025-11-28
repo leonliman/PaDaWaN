@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="20">
+    <Attribute domain="Bewegung" extID="ORGPF" />
+</Query>
+
+---Result---
+
+ORGPF
+M34 Medizin
+M34 Medizin
+M34 Medizin
+M33 Medizin
+M33 Medizin
+M33 Medizin
+M33 Medizin
+M33 Medizin

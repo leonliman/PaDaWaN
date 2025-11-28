@@ -1,0 +1,13 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute elementID="Param1" extID="0000000001" domain="Labor" />
+    <Attribute extID="0000002153" domain="Labor" >
+        <TempOpRel refElemID="Param1" dayShiftMin="-1" dayShiftMax="1" />
+    </Attribute>
+</Query>
+
+---Result---
+
+Natrium_g_dl	H_moglobin_g_dl
+10.0	13.8

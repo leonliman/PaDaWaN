@@ -1,0 +1,19 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow optional="true">
+      <Attribute comment="Idiot comment" attrName="Kalium (mmol/l)" contentOperator="MORE" desiredContent="60" domain="labor" extID="kalium_mmol_l"/>
+    </DistributionRow>
+    <DistributionColumn optional="true">
+      <Attribute optional="true" attrName="FallArt=teilstationaer" domain="stammdaten" extID="fallart_teilstationaer"/>
+    </DistributionColumn>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle	FallArt=teilstationaer	Summe	Doppelte
+Alle	19	19	19	0
+Kalium (mmol/l) > 60	6	6	6	0

@@ -1,0 +1,24 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="*" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS *
+>>Eine<< 85 >>jährige<< Patientin >>mit<< bekannter >>schwerer<< pAVK >>k<< | >>Eine<< 85 >>jährige<< Patientin >>mit<< bekannter >>schwerer<< pAVK >>k<<
+>>Männlich<<, >>Alter<< 32 >>Jahre<<  >><<  Diagnosen[>>Bearbeiten<<] >><< Akute >>My<<
+>>Männlich<<, >>Alter<< 32 >>Jahre<<  >><<  Diagnosen[>>Bearbeiten<<] >><< Akute >>My<<
+>>Männlicher<< Patient >>geb<< 1945,>><< stationär >>25<<.10.>>2011<< – >>07<<.11.>>201<<
+>>Männlicher<< Patient >>geb<< 1945,>><< stationär >>25<<.10.>>2011<< – >>07<<.11.>>201<<
+>>Sehr<< geehrter >>Herr<< Kollege,>><<  >><<  >>wir<< berichten >>über<< Herrn
+>>Sehr<< geehrter >>Herr<< Kollege,>><<  >><<  >>wir<< berichten >>über<< Herrn
+>>Sehr<< geehrter >>Herr<< Kollege,>><<  >><<  >>wir<< berichten >>über<< Herrn
+>>wir<< berichten >>über<< Männlich >>17<< Jahre >>der<< sich >>in<< der >>Z<<
+>>wir<< berichten >>über<< Männlich >>17<< Jahre >>der<< sich >>in<< der >>Z<<
+>>wir<< verlegen >>Ihnen<< Herrn >>Sowieso<<, >>geb<<. >>1948<<, >><<, >>bei<< uns
+>>wir<< verlegen >>Ihnen<< Herrn >>Sowieso<<, >>geb<<. >>1948<<, >><<, >>bei<< uns

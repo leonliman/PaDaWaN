@@ -1,0 +1,6 @@
+<ImportConfig>
+	<MetaDataPatient Dir="Patienten" PIDColumn="ppatnr" YOBColumn="YOB" SexColumn="gschl" StornoColumn="Storn" />
+	<MetaDataCase Dir="Faelle" PIDColumn="ppatnr" CaseIDColumn="pfalnr" CreationDateColumn="ERDAT" CaseTypeColumn="FALAR" StornoColumn="storn" />
+	<MetaDataDoc Dir="Dokumente" PIDColumn="PPATNR" CaseIDColumn="PFALNR" DocIDColumn="pdoknr" DateColumn="erstelltAm" TimeColumn="erstelltUm" StornoColumn="invalid?" DocTypeColumn="Dokumenttyp" />
+	<MetaDataMov Dir="Bewegungen" CaseIDColumn="FALNR" FromDateColumn="BWIDT" FromTimeColumn="BWIZT" EndDateColumn="BWEDT" EndTimeColumn="BWEZT" MoveTypeColumn="BEWTY" StornoColumn="STORN" />
+</ImportConfig>

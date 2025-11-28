@@ -1,0 +1,10 @@
+---Query---
+
+<Query>
+  	<Attribute extID="Geschlecht" domain="Geschlecht" contentOperator="equals" desiredContent="M" />
+</Query>
+
+---Result---
+
+Geschlecht
+M | M | M

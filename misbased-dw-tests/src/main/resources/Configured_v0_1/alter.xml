@@ -1,0 +1,11 @@
+<ImportConfig>
+	<Catalog Priority="1">
+		<Entry ExtID="Stammdaten" Name="Stammdaten" />
+	</Catalog>
+	<Catalog Priority="0" Project="Alter" ParentExtID="Stammdaten" ParentProject="">
+		<Entry ExtID="Alter" Name="Alter" DataType="Number" />
+	</Catalog>
+	<Data Project="Alter">
+		<CSVData Dir="Faelle" CaseIDColumn="pfalnr" Special="Alter" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>

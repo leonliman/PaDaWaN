@@ -1,0 +1,30 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Monozyten (%)" domain="labor" extID="monozyten__" onlyDisplayExistence="true"/>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+Monozyten (%)
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X

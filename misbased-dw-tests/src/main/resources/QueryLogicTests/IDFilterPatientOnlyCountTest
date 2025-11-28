@@ -1,0 +1,10 @@
+---Query---
+
+<Query onlyCount="true" >
+    <Attribute extID="0000000002" domain="Labor" reductionOp="letzter Wert" />
+</Query>
+
+---Result---
+
+count
+1

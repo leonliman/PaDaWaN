@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="ErrorFileLog" fileName="tmp/log/error-log.log" append="false">
+			<PatternLayout pattern="%d %p %c{1.} [%t] %m%n" />
+		</File>
+		<Console name="syserr" target="SYSTEM_ERR">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<Console name="syso" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="DW-Imperator" level="TRACE" additivity="false">
+			<AppenderRef ref="ErrorFileLog" />
+		</Logger>
+		<!-- <Root level="debug"> -->
+		<!-- <Root level="info"> -->
+		<Root level="trace">
+			<AppenderRef ref="syso" />
+		</Root>
+	</Loggers>
+</Configuration>

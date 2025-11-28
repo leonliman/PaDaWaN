@@ -1,0 +1,32 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Protein (U)" domain="labor" extID="protein__u__"/>
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l" displayValue="false"/>
+  </IDFilter>
+</Query>
+
+
+
+
+
+---Result---
+
+Protein (U)
+50.0 | 60.0 | 50.0 | 50.0
+60.0 | 50.0 | 60.0
+30.0 | 30.0 | 30.0
+10.0
+30.0
+30.0
+20.0
+80.0 | 80.0 | 80.0 | 80.0 | 80.0
+80.0
+10.0 | 10.0
+60.0 | 40.0 | 90.0 | 60.0
+30.0 | 60.0
+50.0
+80.0
+10.0 | 10.0
+80.0

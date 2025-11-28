@@ -1,0 +1,112 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>misbased-dw</groupId>
+        <artifactId>misbased-dw-core-parent</artifactId>
+        <version>2.1</version>
+        <relativePath>../misbased-dw-core-parent</relativePath>
+    </parent>
+    <artifactId>misbased-dw-imports-app</artifactId>
+    <properties>
+        <imperator-target.example-env>${project.build.directory}/imperator-env--${project.version}
+        </imperator-target.example-env>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-imports-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>misbased-dw</groupId>
+            <artifactId>misbased-dw-imports-api-sql</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>TheDwImperatorApp-${project.version}</finalName>
+        <plugins>
+            <!-- add final jar to provided env -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <configuration>
+                            <target>
+                                <property name="mvn.jar.finalName"
+                                          value="${project.build.finalName}"/>
+                                <property name="mvn.dir.deploy"
+                                          value="${imperator-target.example-env}"/>
+                                <copy
+                                        file="/${project.build.directory}/${mvn.jar.finalName}.jar"
+                                        todir="${mvn.dir.deploy}"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <!-- get all project dependencies -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- MainClass in mainfest make a executable jar -->
+                    <archive>
+                        <manifest>
+                            <mainClass>de.uniwue.dw.imports.app.TheDwImperatorApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>assemble-all</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

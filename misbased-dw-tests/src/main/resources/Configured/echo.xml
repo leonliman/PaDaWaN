@@ -1,0 +1,8 @@
+<ImportConfig Version="0.2">
+	<DataXML Project="Echo">
+		<DataSourceFilesystem Dir="Echo/Dokumente" Encoding="Windows-1252" />
+		<AcceptedExtIDs>
+			<ExtID Value="Befund" ImportText="true" />
+		</AcceptedExtIDs>
+	</DataXML>
+</ImportConfig>

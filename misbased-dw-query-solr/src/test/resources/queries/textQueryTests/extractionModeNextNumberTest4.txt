@@ -1,0 +1,15 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="unscharf" extractionMode="NextNumber" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS unscharf
+1,5
+1,5
+1,5

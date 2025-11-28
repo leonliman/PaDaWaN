@@ -1,0 +1,11 @@
+<ImportConfig>
+	<Catalog>
+		<Entry ExtID="Stammdaten" Name="Stammdaten" />
+	</Catalog>
+	<Catalog Project="AufnahmeEntlassung" ParentExtID="Stammdaten" ParentProject="">
+		<Entry ExtID="Aufnahme" Name="Aufnahme" DataType="DateTime" />
+	</Catalog>
+	<Data Project="AufnahmeEntlassung">
+		<CSVData Dir="Faelle" CaseIDColumn="pfalnr" Special="Aufnahme" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>

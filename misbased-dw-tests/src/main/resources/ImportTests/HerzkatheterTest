@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="ZKAHKVEEFP" name="EF in %" domain="Herzkatheter" />
+</Query>
+
+---Result---
+
+ZKAHKVEEFP
+56.0

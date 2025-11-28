@@ -1,0 +1,7 @@
+<ImportConfig Version="0.2">
+	<DataTable Project="Diagnose" ExtIDColumn="DKEY1~-~DKEY2~-~DKEY_REF" ValueColumn="DITXT" CaseIDColumn="PFALNR" 
+	MeasureDateColumn="DIADT" MeasureDateFormat="yyyyMMdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" 
+	StornoColumn="STORN" UnknownExtIDEntryExtID="code_not_known">
+		<DataSourceCSVDir Dir="Diagnosen" Encoding="Windows-1252" />
+	</DataTable>
+</ImportConfig>

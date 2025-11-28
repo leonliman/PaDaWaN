@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="20">
+  <IDFilter filterIDType="CaseID" distinct="false">
+    <Attribute domain="MetaDaten" extID="CaseID" reductionOp="Earliest"/>
+  </IDFilter>
+</Query>
+
+---Result---
+
+CaseID
+1101
+1102
+1104
+1105
+1106
+1107

@@ -1,0 +1,13 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="GROUP">
+    	<Attribute extID="I50" domain="Diagnose" />
+    	<Attribute extID="Entlass_Diagnose" domain="Diagnose" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+I50	Entlass_Diagnose
+I50.1 : Linksherzinsuffizienz	X

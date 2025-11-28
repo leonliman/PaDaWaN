@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation></xs:documentation>
+	</xs:annotation>
+	<xs:annotation>
+		<xs:documentation>Parallel zum Import mit selbstgeschriebenen Java-Programmen kann man einen generischen Importer verwenden der nur konfiguriert werden muss um neue Domänen importieren zu können. In der DWConfiguration muss der Parameter "dw.import.dir.importConfigs" auf ein Verzeichnis gesetzt werden in dem XML-Dateien mit Konfigurationen für die Imports liegen. In dem Verzeichnis dürfen beliebig viele Import-Konfigurationen liegen. Man beachte die generelle CaseSensitivität von XML. Alle Pfadangaben sind (wenn sie nicht absolut sind) relativ zum Haupt-Daten-Export-Ordner, bzw. Haupt-Externe-Kataloge-Ordner.</xs:documentation>
+	</xs:annotation>	
+
+	<xs:element name="ImportConfig">
+		<xs:annotation>
+			<xs:documentation>Alle Konfigurationen haben als äußerstes Element eine ImportConfig.</xs:documentation>
+		</xs:annotation>	
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Catalog" minOccurs="0" maxOccurs="unbounded" type="CatalogType">
+					<xs:annotation>
+						<xs:documentation>Mit einem Catalog-Element wird die Konfigurationen eines Katalog-Imports definiert.</xs:documentation>
+					</xs:annotation>	
+				</xs:element>
+				<xs:element name="Data" minOccurs="0" maxOccurs="unbounded" type="DataType">
+					<xs:annotation>
+						<xs:documentation>Mit einem Data-Element wird die Konfiguration eines Daten-Imports definiert.</xs:documentation>
+					</xs:annotation>	
+				</xs:element>
+				<xs:element name="MetaDataPatient" minOccurs="0" type="MetaDataPatientType">
+					<xs:annotation> 
+						<xs:documentation>Hiermit werden Patienten-Meta-Daten mit einem CSV-Importer importiert und in die Import-Hilfstabelle DWImportPIDs geschrieben
+Beispiel:
+<![CDATA[
+<ImportConfig Priority="5">
+	<MetaDataPatient Dir="Patienten" PIDColumn="ppatnr" YOBColumn="YOB" SexColumn="gschl" StornoColumn="Storn" />
+	<MetaDataCase Dir="Faelle" PIDColumn="ppatnr" CaseIDColumn="pfalnr" AdmissionDateColumn="BEGDT" DischargeDateColumn="ENDDT" CreationDateColumn="ERDAT" CaseTypeColumn="FALAR" StornoColumn="storn" />
+	<MetaDataDoc Dir="Dokumente" PIDColumn="PPATNR" CaseIDColumn="PFALNR" DocIDColumn="pdoknr" DateColumn="erstelltAm" TimeColumn="erstelltUm" StornoColumn="invalid?" DocTypeColumn="Dokumenttyp" />
+	<MetaDataMov Dir="Bewegungen" CaseIDColumn="PFALNR" DateColumn="BWIDT" TimeColumn="BWIZT" StornoColumn="STORN" />
+</ImportConfig>
+
+				]]>						
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MetaDataCase" minOccurs="0" type="MetaDataCaseType">
+					<xs:annotation> 
+						<xs:documentation>Hiermit werden Fall-Meta-Daten mit einem CSV-Importer importiert und in die Import-Hilfstabelle DWImportCases geschrieben</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MetaDataDoc" minOccurs="0" type="MetaDataDocType">
+					<xs:annotation> 
+						<xs:documentation>Hiermit werden Dokument-Meta-Daten mit einem CSV-Importer importiert und in die Import-Hilfstabelle DWImportDocs geschrieben</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="MetaDataMov" minOccurs="0" type="MetaDataMovType">
+					<xs:annotation> 
+						<xs:documentation>Hiermit werden Bewegungs-Meta-Daten mit einem CSV-Importer importiert und in die Import-Hilfstabelle DWImportCases geschrieben.</xs:documentation>
+					</xs:annotation>
+				</xs:element>				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="CatalogType">
+		<xs:sequence>
+			<xs:element name="Entry" minOccurs="0" maxOccurs="unbounded" type="CatalogEntryType">
+				<xs:annotation> 
+					<xs:documentation>Hiermit können in einer Katalog-Import-Konfigurationen einzelne Einträge explizit erzeugt werden. Entry-Einträge können geschachtelt werden. Damit kann man die Struktur der neu erzeugten Einträge im Katalog angeben. Entry-Einträge die in andere Entry-Einträge geschachtelt sind werden im Katalog als Kind-Einträge erzeugt.
+Beispiel:
+<![CDATA[
+<ImportConfig>
+	<Catalog Project="Echo" ParentExtID="BildgebendeVerfahren" ParentProject="">
+		<Entry ExtID="Echo" Name="Echo" DataType="Text">
+			<Entry ExtID="Anforderung" Name=" Anforderung " DataType="Text" />
+		</Entry>
+	</Catalog>
+</ImportConfig>
+				]]>	
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CSVCatalog" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation> 
+					<xs:documentation>Katalogeinträge können basierend auf einem Tabulator-getrennten CSV-File eingelesen und erzeugt werden. In den Daten des CSVs dürfen selbst keine Tabs vorkommen.
+Beispiel:
+<![CDATA[
+<ImportConfig>
+	<Catalog Project="Labor">
+		<CSVData File="./Labor.csv" ExtIDColumn="ExtID" NameColumn="Name" ParentExtIDColumn="ParentExtID"></CSVData>
+	</Catalog>
+</ImportConfig>
+				]]>	
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="File" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Das CSV-File das importiert werden soll. Das File wird relativ zum Dir-Parameter „dw.imports.dir.external_terminology_dir“ erwartet.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Encoding" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Das Encoding das verwendet werden soll um das CSV-File zu lesen</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="Delimiter" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="QuoteMode" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="EscapeChar" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ExtIDColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte aus der die ExtID stammt pro neu erzeugtem Eintrag</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="NameColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte aus der der Name stammt pro neu erzeugtem Eintrag</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="UniqueNameColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte aus der der UniqueName stammt pro neu erzeugtem Eintrag</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ParentExtIDColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte in der die ExtID steht unter den der neu erzeugte Eintrag gehängt wird. Das Projekt des Elternknotens ist dasselbe wie aller anderen Knoten die mit diesem Importer erzeugt werden. Falls dieser Eintrag leer ist wird der neue Knoten direkt unter die Root gehängt die im Catalog-XML-Knoten weiter oben angegeben wurde</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="DataTypeColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte die den Datentyp der Knoten angibt</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="UnitColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte in der die Einheit der numerischen Werte steht die dieser Katalog darstellt.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="LowerBoundColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte die die untere Schranke angibt, ab der der Eintrag als extrem niedrig eingestuft wird.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="UpperBoundColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte die die untere Schranke angibt, ab der der Eintrag als extrem hoch eingestuft wird.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ParentProjectOverrideColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Wenn es dynamisch unterschiedliche Parent Projects geben soll kann hiermit die Spalte angegeben werden in der das ParentProject steht.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ProjectOverrideColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Wenn die imporiterten Einträge von verschiedenen Projekten sein sollen, kann hiermit die Spalte angegeben werden die das jeweilige Projekt angibt.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Project" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Das Project mit dem alle Katlaogeinträge versehen werden die in dieser Katalogerstellung angelegt werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentExtID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Die ExtID des Knotens unter dem die neu erstellten Knoten eingefügtr werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentProject" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Das Project des Knotens unter dem die neu erstellten Knoten eingefügtr werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Priority" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>Mit der Priority kann die Reihenfolge aller Importer konfiguriert werden. Importer mit einem höheren Wert werden vor anderen mit einem niedrigeren Wert ausgeführt.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="CatalogEntryType">
+		<xs:sequence>
+			<xs:element name="Entry" minOccurs="0" maxOccurs="unbounded" type="CatalogEntryType"></xs:element>
+		</xs:sequence>
+		<xs:attribute name="ExtID" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Die ExtID des neu erzeugten Eintrags</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Name" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Name des neu erzeugten Eintrags</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DataType" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Datentyp des neu erzeugten Eintrags (SingleChoice, Text, Number, Bool, Structure, isA, DateTime)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentProject" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentExtID" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation></xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="DataType">
+		<xs:sequence>
+			<xs:element name="TextData" minOccurs="0" maxOccurs="unbounded" type="TextDataType">
+				<xs:annotation> 
+					<xs:documentation>Mit einem Text-Element kann ein Verzeichnis mit Text-Files importiert werden. Teile der Informationen die importiert werden, analog zum XML-Importer, aus dem Dateinamen der Files entnommen.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="XML" minOccurs="0" maxOccurs="unbounded" type="XMLDataType">
+				<xs:annotation> 
+					<xs:documentation>Mit einem XML-Element kann ein Verzeichnis mit XML-Files importiert werden. Teile der Informationen die importiert werden (z.B. PID oder DocID) werden aus dem Dateinamen der XML-Files entnommen.
+Die Katalogeinträge in die Importiert wird werden beim Import der Daten OnTheFly angelegt. Als Daten für diese neuen Katalogeinträge werden der XML-Knotenname als ExtID verwendet, der XML-Knoten-Paramter „Name“ als Name und der XML-Knoten-Paramter „Text“ als Value für den neuen Info-Eintrag der importiert wird. Alle neu angelegten Katalogeinträge sind vom Datentyp „Text“.		
+
+Beispiel:
+<![CDATA[
+
+Datenbeispiel:
+
+<PraeMed>
+  <Dokumentdatum>14.02.2012</Dokumentdatum>
+  <Dokumentzeit>10:00:30</Dokumentzeit>
+  <Befunddaten>
+    <ZANOPPRRA9 TECH="" TEXT="Anästhesie, Allergie, Blut" VALUE="">
+      <ZANOPPRD02 TECH="" TEXT="Allergie">
+        <Eintrag>
+          <ZANOP02003 TECH="" TEXT="Pollen" VALUE="X"/>
+          <ZANOP02004 TECH="" TEXT="Penicillin" VALUE="X"/>
+        </Eintrag>
+      </ZANOPPRD02>
+    </ZANOPPRRA9>
+  </Befunddaten>
+</PraeMed>
+
+<ImportConfig>
+	<Data Project="Praemedikation">
+		<XML Dir=".\Praemedikation\Dokumente">
+			<AcceptedExtIDs>
+				<ExtID Value="Befunddaten" IsRoot="true" />
+			</AcceptedExtIDs>
+		</XML>
+	</Data>
+</ImportConfig>
+
+				]]>				
+					</xs:documentation>
+				</xs:annotation>
+				
+			</xs:element>
+			<xs:element name="CSVData" minOccurs="0" maxOccurs="unbounded" type="CSVDataType">
+				<xs:annotation> 
+					<xs:documentation>Daten können basierend auf einem Tabulator-getrennten CSV-File eingelesen werden.
+Beispiel:
+<![CDATA[
+Daten-Import aus einem Verzeichnis mit CSV-Files mit einer ExtID-Spalte
+
+Datenbeispiel:
+PFALNR	DKEY1	DITXT			DIADT		DIAZT	STORN
+1101	S42.21	Humerusfraktur subkapital	20090529	172521	
+1102	S93.48	Läsion fibulotalares Band	20090529	173951	X
+
+<ImportConfig>
+<Data Project="Diagnose">
+		<CSV Dir=".\Diagnosen" ExtIDColumn="DKEY1" ValueColumn="DITXT" CaseIDColumn="PFALNR" MeasureDateColumn="DIADT" MeasureDateFormat="yyyymmdd" MeasureTimeColumn="DIAZT" MeasureTimeFormat="hhmmss" StornoColumn="STORN" UnknownExtIDEntryExtID="code_not_known" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>
+
+Daten-Import aus einem Verzeichnis mit CSV-Files mit mehreren Value-Spalten
+
+Datenbeispiel:
+pfalnr	FALAR	ppatnr	BEGDT		ENDDT		ERDAT		UPDAT		storn
+1101	1	1001	02.04.2009	02.04.2009	02.04.2009	30.05.2009	
+1102	2	1002	01.01.2009	01.01.2009	01.01.2009	10.01.2009	
+1103	2	1002	01.02.2009	01.02.2009	01.02.2009	10.01.2009	X
+
+<ImportConfig>
+	<Data Project="Fallart">
+		<CSV Dir=".\Faelle" CaseIDColumn="pfalnr" Encoding="Windows-1252" >
+			<DataColumn ValueColumn="FALAR" ExtID="Fallart">
+				<ReplaceValue Value="1" Replacement="stationaer" />
+				<ReplaceValue Value="2" Replacement="ambulant" />
+			</DataColumn>
+		</CSV>
+	</Data>
+</ImportConfig>
+
+Spezial-Importer: Alter, Aufnahme, Entlassung, Erste Bewegung, Letzte Bewegung, PID
+
+<ImportConfig>
+	<Catalog>
+		<Entry ExtID="Stammdaten" Name="Stammdaten" />
+	</Catalog>
+	<Catalog Project="Alter" ParentExtID="Stammdaten">
+		<Entry ExtID="Alter" Name="Alter" DataType="Number" />
+	</Catalog>
+	<Data Project="Alter">
+		<CSV Dir=".\Faelle" CaseIDColumn="pfalnr" Special="Alter" Encoding="Windows-1252" />
+	</Data>
+</ImportConfig>
+				]]>						
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Project" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Das Project ist der Name des Projektes bzw. der Domäne die importiert werden soll. Alle KatalogEinträge die beim Import verwendet werden sind aus diesem Projekt.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RootName" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Name des Root-Knotens dieses Projektes. Der intern verwendete Name "Project" wird durch diesen Member nicht berührt. Der Default für diesen Member ist der Wert von "Project".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RootExtID" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Die ExtID des Root-Knotens dieses Projektes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="RootProject" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Wenn die Root ein anderes Projekt sein soll als alle anderen Knoten dieses Projektes.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UseMetaData" type="xs:boolean">
+			<xs:annotation> 
+				<xs:documentation>Soll bei jeder importierten Fakten-Zeile in den MetaDaten geprüft werden ob die jeweilige verwendete PID, bzw. CaseID oder DocID wirklich existiert. Default ist TRUE. Wenn ausgeschaltet, müssen bei allen Importen alle benötigten Daten in jeder Zeile vorhanden sein, d.h. PID, und MeasureTime müssen zwingend angegeben werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Priority" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>Mit der Priority kann die Reihenfolge aller Importer konfiguriert werden. Importer mit einem höheren Wert werden vor anderen mit einem niedrigeren Wert ausgeführt.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="MetaDataPatientType">
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Delimiter" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuoteMode" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EscapeChar" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="YOBColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>die YearOfBirth-Spalte</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SexColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>die Geschlecht-Spalte</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StornoColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>die Storno-Spalte</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="MetaDataCaseType">
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Delimiter" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuoteMode" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EscapeChar" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationTimestampColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationTimestampFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationDateColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationDateFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationTimeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreationTimeFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseTypeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Die Fallart des Falles</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StornoColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="MetaDataDocType">
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Delimiter" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuoteMode" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EscapeChar" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimestampColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimestampFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DateColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DateFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TimeFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StornoColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocTypeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Dokumenttyp</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="MetaDataMovType">
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Delimiter" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuoteMode" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EscapeChar" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromTimestampColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromTimestampFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromDateColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromDateFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromTimeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="FromTimeFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndTimestampColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndTimestampFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndDateColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndDateFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndTimeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EndTimeFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MoveTypeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Typ der Bewegung</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StornoColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="TextDataType">
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Siehe CSVData</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der reguläre Ausdruck der aus dem jeweiligen Filenamen die PID extrahiert</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der reguläre Ausdruck der aus dem jeweiligen Filenamen die CaseID extrahiert</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der reguläre Ausdruck der aus dem jeweiligen Filenamen die DocID extrahiert</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ExtID" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>In den Katalogeintrag mit dieser ExtID werden die Texte importiert. Wenn der Parameter nicht angegeben wird, wird die Projekt-Root verwendet.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="XMLDataType">
+		<xs:sequence>
+			<xs:element name="AcceptedExtIDs" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation> 
+					<xs:documentation>Hier wird eine Liste von ExtIDs angegeben die aus den XML-Files importiert werden sollen. Wenn keine AcceptedExtIDs angegeben werden, werden alle importiert (bis auf die Rejecteten).</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ExtID" minOccurs="0" maxOccurs="unbounded" type="XMLExtIDType"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RejectedExtIDs" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation> 
+					<xs:documentation>Hier wird eine Liste von ExtIDs angegeben die explizit nicht importiert werden sollen</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ExtID" minOccurs="0" maxOccurs="unbounded" type="XMLExtIDType"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>aus diesem Verzeichnis werden alle XML-Dateien importiert. Das Verzeichnis ist relativ zum Pfad des Parameters „dw.imports.dir.sap_export“.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>das Encoding das verwendet werden soll um die XML-File zu lesen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>der reguläre Ausdruck der auf jeden Dateinamen angewendet wird um die PID zu erhalten.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>der reguläre Ausdruck der auf jeden Dateinamen angewendet wird um die CaseID zu erhalten.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocIDRegex" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>der reguläre Ausdruck der auf jeden Dateinamen angewendet wird um die DocID zu erhalten.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IDCSVFile" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Ein Konfigurations-File das den XML Import genauer spezifiziert.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentExtID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Da beim Einlesen von XML-Files auch CatalogEntries angelegt werden können kann hier auch eine ParentExtID angegeben werden unter die die neuen Knoten eingehängt werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ParentProject" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Das Project des Knotens unter dem die neu erstellten Knoten eingefügtr werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="XMLExtIDType">
+		<xs:attribute name="Value" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>eine ExtID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>										
+		<xs:attribute name="IsRoot" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>gibt an ob dieser Knoten importiert werden soll oder er nur angibt, dass alle seine Kinderknoten importiert werden sollen und er selber nur ein Root-Strukturknoten ist</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>										
+		<xs:attribute name="ImportText" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>gibt an ob der enthaltene Text des XML-Elements importiert werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>										
+	</xs:complexType>
+
+	<xs:complexType name="CSVDataType">
+		<xs:annotation> 
+			<xs:documentation>Von den Spalten PIDColumn, CaseIDColumn und DocIDColumn muss mindestens eine angegeben werden um den neuen Info-Einträgen eine PID zuordnen zu können. Bei CaseID und DocID werden die dazu passenen PIDs aus den Meta-Tabellen geholt.
+Werden keine Timestamp-, Date- und Time-Spalten angegeben wird versucht eine Zeit aus den Meta-Tabellen zu holen. Bei Cases und Docs wird der Anlege-Zeitpunkt des Falles/Dokuments verwendet.
+Wird keine ExtIDColumn angegeben müssen die ExtID explizit mit DataColumn-Elementen angegeben werden
+
+Es gibt zwei Modi wie CSV importiert werden können: entweder werden die Parameter ExtIDColumn und ValueColumn angegeben und pro Zeile wird ein Wert mit der in dieser Zeile engegebenen ExtID importiert. Oder es werden alternativ im CSV-XML-Element DataColumn-Elemente angegeben. Diese definieren, das bestimmte Spalten fix zu bestimmten ExtIDs zugeordnet sind.
+</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation> 
+					<xs:documentation>CSV-Files können beim Einlesen gefiltert werden. Alle unter dem Eintrag aufgelisteten Filter-Tags werden miteinander verundet und eine Zeile des CSVs nur dann importiert, wenn alle Filter erfüllt sind. Ansonsten wird die Zeile übersprungen.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="FilterColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Die Spalte die von diesem Filter geprüft wird.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="FilterValue" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Der Wert der mit dem Wert in der FilterColumn-Spalte übereinstimmen muss.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DataColumn" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation> 
+					<xs:documentation>DataColumns definieren eine Spalte eines CSVs die komplett einer explizit angegebenen ExtID zugeordnet werden. Die erzeugten Fakten bekommen den Zeitstempel der durch die Parametrisierung des CSV-Elementes gegeben wurden.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ReplaceValue" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation> 
+								<xs:documentation>Mit ReplaceValues lassen sich bei DataColumn bestimmte fixe Werte vor dem Import gegen andere Werte austauschen</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="Value" type="xs:string">
+									<xs:annotation> 
+										<xs:documentation>der Wert der in der ValueColumn exakt matchen muss</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+								<xs:attribute name="Replacement" type="xs:string">
+									<xs:annotation> 
+										<xs:documentation>der Wert der beim Match dann stattdessen in die Datenbank importiert wird</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="ExtID" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>die ExtID des KatalogEintrags in die alle Werte dieser DataColumn importiert werden sollen.</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="ValueColumn" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>siehe ValueColumn bei CSVData</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="TimestampFormat" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Das Format wird verwendet, wenn der Datentyp des CatalogEntry in den importiert wird vom Typ DateTime ist. Default ist „yyyy-MM-dd hh:mm:ss“</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AllColumns" minOccurs="0" maxOccurs="1">
+				<xs:annotation> 
+					<xs:documentation>Mit AllColumns werden pro Zeile alle Spalten deren Headernamen exakt einer ExtID eines CatalogEntry des zu importierenden Projektes entspricht in die jeweiligen CatalogEntries importiert. Alle Spalten für die kein CatalogEntry existiert werden ignoriert.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="TimestampFormat" type="xs:string">
+						<xs:annotation> 
+							<xs:documentation>Das Format wird verwendet, wenn der Datentyp des CatalogEntry in den importiert wird vom Typ DateTime ist. Default ist „yyyy-MM-dd hh:mm:ss“</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Dir" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>aus diesem Verzeichnis werden alle Dateien importiert. Das Verzeichnis ist relativ zum Pfad des Parameters „dw.imports.dir.sap_export“.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Encoding" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>das Encoding das verwendet werden soll um das CSV-File zu lesen</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Delimiter" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Trenner mit dem die einzelnen Datenzellen im CSV getrennt sind. Default ist TAB („\t“).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="QuoteMode" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Der Modus wie die einzelnen spalten eventuell gequoted werden. Default ist „NONE“. (Siehe Dokumentation in Apache Commons QuoteMode)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EscapeChar" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>Mit welchem Zeichen werden problematische Sachen in den Values escaped. Default ist ‚\‘</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>in dieser Spalte steht die PID zu der etwas importiert werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CaseIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>in dieser Spalte steht die CaseID zu der etwas importiert werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DocIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>in dieser Spalte steht die DocID zu der etwas importiert werden soll. Der Wert dieser Spalte wird in der Datenbank durch die Ref-Spalte abgebildet.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Special" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>mit diesem Wert lassen sich spezielle Importer aktivieren die ihre Daten aus der Metadaten ermitteln: Mögliche Werte hier sind: "Alter/Aufnahme/Entlassung/Erste Bewegung/Letzte Bewegung/PID/Geschlecht". Wenn ein Special angegeben wurde benötigt man keine ValueColumn mehr.
+Alter: Das Alter wird aus der Differenz zwischen Aufnahme des Falles und Geburtsdatum des Patienten berechnet. Dafür braucht man (nachdem man alle Metadaten importiert hat) zusätlzich zu, Aufnahmedatum des Falles das Alter des Patienten. Aus diesen Daten wird dieser Fakt berechnet.				
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ExtIDColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>in dieser Spalte steht die ExtID des KatalogEintrags zu dem ein Info-Eintrag erzeugt werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ValueColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>in dieser Spalte steht der eigentliche Wert der Information die importiert werden soll</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureTimestampColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>der Zeitstempel der dem neuen Info-Eintrag gegeben werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureTimestampFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>das Format in dem der Stempel aus der MeasureTimestampColumn geparst werden soll. Wenn eine MeasureTimestampColumn angegeben wurde muss auch hier das Format angegeben werden.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureDateColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>ein Datum das dem neuen Info-Eintrag gegeben werden soll.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureDateFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>siehe MeasureTimestampFormat</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureTimeColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>eine Zeit die zusätzlich zum Datum dem neuen Info-Eintrag gegeben werden soll. Dieser Wert ist optional. Wenn er nicht angegeben wurde und nur eine MeasureDatColumn gegeben ist haben alle Einträge die Uhrzeit 00:00.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="MeasureTimeFormat" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>siehe MeasureTimestampFormat</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="StornoColumn" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>steht in dieser Spalte ein „X“ dann ist der Eintrag storniert und wird wieder aus der Datenbank gelöscht.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UnknownExtIDEntryExtID" type="xs:string">
+			<xs:annotation> 
+				<xs:documentation>die ExtID eines KatalogEintrags der verwendet werden soll falls mit der ExtID aus der Spalte ExtIDColumn kein existierender KatalogEintrag gefunden werden kann.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+</xs:schema>

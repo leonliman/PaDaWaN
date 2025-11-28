@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="luftnot herr" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS luftnot herr
+Am Aufnahmetag bekam >>Herr<< Sowieso plötzlich starke >>Luftnot<< und Thoraxschmerzen bei leichter Belastung. Bereit
+Am Aufnahmetag bekam >>Herr<< Sowieso plötzlich starke >>Luftnot<< und Thoraxschmerzen bei leichter Belastung. Bereit

@@ -1,0 +1,13 @@
+---Query---
+
+<Query>
+	<IDFilter filterIDType="CaseID" distinct="true">
+    	<Attribute extID="0000000001" domain="Labor"/>
+    </IDFilter>
+</Query>
+
+---Result---
+
+Natrium_g_dl
+10.0
+15.0

@@ -1,0 +1,13 @@
+<ImportConfig>
+	<Catalog>
+		<Entry ExtID="MetaDaten" Name="MetaDaten" />
+	</Catalog>
+	<Catalog Project="MetaDaten" ParentExtID="MetaDaten">
+		<Entry ExtID="DocumentType" Name="Dokumenttyp" DataType="Text" />
+	</Catalog>
+	<Data Project="MetaDaten">
+		<CSVData Dir="Dokumente" DocIDColumn="pdoknr" Encoding="Windows-1252">
+			<DataColumn ExtID="DocumentType" ValueColumn="Dokumenttyp" />
+		</CSVData>
+	</Data>
+</ImportConfig>

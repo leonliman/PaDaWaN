@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="[die der]" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS [die der]
+lich. Wir haben in anonymisierter Form Meldung an >>die<< Arzneimittelkommission >>der<< deutschen Ärzteschaft
+lich. Wir haben in anonymisierter Form Meldung an >>die<< Arzneimittelkommission >>der<< deutschen Ärzteschaft
+Am Aufnahmetag erfolgt eine Coronarangiographie, >>die<< einen unauffälligen Befund ergibt. >>Der<< Patient w
+Am Aufnahmetag erfolgt eine Coronarangiographie, >>die<< einen unauffälligen Befund ergibt. >>Der<< Patient w
+liche ST Senkungen . Im Echo ausgedehnte Akinesie >>der<< HW und Seitenwand. >>Die<< Patient hat anhaltende sc | liche ST Senkungen . Im Echo ausgedehnte Akinesie >>der<< HW und Seitenwand. >>Die<< Patient hat anhaltende sc

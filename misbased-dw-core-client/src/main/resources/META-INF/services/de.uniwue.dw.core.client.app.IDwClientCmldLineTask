@@ -1,0 +1,9 @@
+de.uniwue.dw.core.client.app.task.PrintProjects
+de.uniwue.dw.core.client.app.task.PrintCatalog
+de.uniwue.dw.core.client.app.task.PrintCatalogSubtreeByInternalId
+de.uniwue.dw.core.client.app.task.PrintCatalogSubtreeByExtId
+de.uniwue.dw.core.client.app.task.PrintCatalogSubtreeByProject
+de.uniwue.dw.core.client.app.task.PrintDocByRef
+de.uniwue.dw.core.client.app.task.PrintDwInfoCount
+de.uniwue.dw.core.client.app.task.QueryLetterText
+de.uniwue.dw.core.client.app.task.ClearDw

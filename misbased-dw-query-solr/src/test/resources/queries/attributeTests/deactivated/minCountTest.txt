@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l" minCount="3" countType="CaseID"/>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+Natrium (mmol/l)
+50.0, 60.0, 70.0
+40.0, 40.0, 40.0, 40.0, 40.0
+70.0, 60.0, 70.0, 80.0, 70.0
+70.0, 60.0, 70.0, 80.0, 70.0

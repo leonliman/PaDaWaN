@@ -1,0 +1,18 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="dies*" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS dies*
+er anhaltende Thoraxschmerz.    Aufnahmebefund: Zu >>diesem<< Zeitpunkt fühlte sich der 17-jährige Patient schla
+er anhaltende Thoraxschmerz.    Aufnahmebefund: Zu >>diesem<< Zeitpunkt fühlte sich der 17-jährige Patient schla
+n wie auch der portalvenösen Phase demarkiert sich >>diese<< Läsion hypodens zum restlichen Bauchspeicheldrüsen
+n wie auch der portalvenösen Phase demarkiert sich >>diese<< Läsion hypodens zum restlichen Bauchspeicheldrüsen
+n wie auch der portalvenösen Phase demarkiert sich >>diese<< Läsion hypodens zum restlichen Bauchspeicheldrüsen
+wird eine sofortige Koronarangiografie angestrebt. >>Diese<< ist nicht möglich, da beiden Leisten verschlossen | wird eine sofortige Koronarangiografie angestrebt. >>Diese<< ist nicht möglich, da beiden Leisten verschlossen

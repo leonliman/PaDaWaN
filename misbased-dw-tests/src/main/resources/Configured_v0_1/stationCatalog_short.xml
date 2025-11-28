@@ -1,0 +1,5 @@
+<ImportConfig>
+	<Catalog Project="Station" Priority="10">
+		<CSVCatalog File="stationCatalog_short.csv" ExtIDColumn="ExtID" NameColumn="Name" ParentExtIDColumn="ParentExtID" />
+	</Catalog>
+</ImportConfig>

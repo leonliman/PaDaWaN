@@ -1,0 +1,22 @@
+---Query---
+
+<Query distinct="true" limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Geschlecht" domain="stammdaten" extID="geschlecht"/>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+Geschlecht
+W
+W
+M
+M
+W
+M
+M
+M
+W

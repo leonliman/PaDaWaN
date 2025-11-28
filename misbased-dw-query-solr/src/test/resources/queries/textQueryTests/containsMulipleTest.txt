@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="herr luftnot" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS herr luftnot
+z,  Hyperlipidämie  Anamnese  Am Aufnahmetag bekam >>Herr<< Sowieso plötzlich starke >>Luftnot<< und Thoraxschmerz
+z,  Hyperlipidämie  Anamnese  Am Aufnahmetag bekam >>Herr<< Sowieso plötzlich starke >>Luftnot<< und Thoraxschmerz

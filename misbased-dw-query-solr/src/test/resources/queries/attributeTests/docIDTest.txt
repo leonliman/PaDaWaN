@@ -1,0 +1,16 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="B95 : Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind" domain="diagnose" extID="b95" DocID="true"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Streptokokken und Staphylokokken als Ursache von Krankheiten. die in anderen Kapiteln klassifiziert sind	docID
+X	0
+X	0
+X	0
+X	0

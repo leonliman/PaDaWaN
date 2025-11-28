@@ -1,0 +1,14 @@
+<ImportConfig Version="0.2">
+	<MetaDataPatient PIDColumn="ppatnr" YOBColumn="YOB" SexColumn="gschl" StornoColumn="Storn">
+		<DataSourceCSVDir Dir="Patienten" Encoding="Windows-1252" />
+	</MetaDataPatient>
+	<MetaDataCase PIDColumn="ppatnr" CaseIDColumn="pfalnr" CreationDateColumn="ERDAT" CaseTypeColumn="FALAR" StornoColumn="storn">
+		<DataSourceCSVDir Dir="Faelle" Encoding="Windows-1252" />
+	</MetaDataCase>
+	<MetaDataDoc PIDColumn="PPATNR" CaseIDColumn="PFALNR" DocIDColumn="pdoknr" DateColumn="erstelltAm" TimeColumn="erstelltUm" StornoColumn="invalid?" DocTypeColumn="Dokumenttyp">
+		<DataSourceCSVDir Dir="Dokumente" Encoding="Windows-1252" />
+	</MetaDataDoc>
+	<MetaDataMov CaseIDColumn="FALNR" FromDateColumn="BWIDT" FromTimeColumn="BWIZT" EndDateColumn="BWEDT" EndTimeColumn="BWEZT" MoveTypeColumn="BEWTY" StornoColumn="STORN">
+		<DataSourceCSVDir Dir="Bewegungen" Encoding="Windows-1252" />
+	</MetaDataMov>
+</ImportConfig>

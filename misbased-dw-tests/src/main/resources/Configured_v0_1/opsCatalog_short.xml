@@ -1,0 +1,5 @@
+<ImportConfig>
+	<Catalog Project="Procedures" Priority="10">
+		<CSVCatalog File="opsCatalog_short.csv" ExtIDColumn="ExtID" NameColumn="Name" ParentExtIDColumn="ParentExtID" DataTypeColumn="DataType" />
+	</Catalog>
+</ImportConfig>

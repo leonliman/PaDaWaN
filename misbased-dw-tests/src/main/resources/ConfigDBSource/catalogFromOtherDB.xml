@@ -1,0 +1,20 @@
+<ImportConfig Version="0.2">
+	<CatalogTable Priority="1" ExtIDColumn="ExtID" ProjectColumn="project" NameColumn="Name" DataTypeColumn="datatype" 
+	ParentExtIDColumn="ParentExtID" ParentProjectColumn="parentProject" UnitColumn="unit" LowerBoundColumn="lowbound" UpperBoundColumn="highbound" >
+		<DataSourceDatabase SQLServer="localhost" SQLDatabase="padawan_test" SQLUser="padawan_test" TableName="Catalog" RowIDColumn="AttrID" SQLPassword="padawan_test" 
+SelectString="
+select * from (select 
+	c1.extid, c1.name, c1.datatype, c1.project, c1.uniquename, c1.CreationTime,
+	c2.ExtID as parentExtID, c2.Project as parentProject, c1.AttrID
+from 
+	dwcatalog c1,
+	(select * from dwcatalog union all
+	(select 0, 'root', '', 0, 0, 'structure', '', '2000-05-30 11:47:30.000000', 'root', null)) c2 
+where
+	c2.AttrID = c1.ParentID and c2.attrid &gt;= ? 
+) t
+left outer join
+	(select * from dwcatalognumdata) num on t.AttrID = num.AttrID order by t.attrid
+"/>
+	</CatalogTable>
+</ImportConfig>

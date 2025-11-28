@@ -1,0 +1,34 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l"/>
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l" reductionOp="EARLIEST"/>
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l" reductionOp="LATEST"/>
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l" reductionOp="MAX"/>
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l" reductionOp="MIN"/>
+  </IDFilter>
+</Query>
+
+
+
+
+---Result---
+
+Kalium (mmol/l)	Kalium (mmol/l) - FIRST	Kalium (mmol/l) - LAST	Kalium (mmol/l) - MAX	Kalium (mmol/l) - MIN
+40.0 | 30.0 | 40.0 | 50.0	40.0	50.0	30.0	50.0
+20.0 | 20.0 | 20.0	20.0	20.0	20.0	20.0
+40.0 | 50.0	40.0	50.0	50.0	40.0
+10.0	10.0	10.0	10.0	10.0
+40.0	40.0	40.0	40.0	40.0
+40.0	40.0	40.0	40.0	40.0
+30.0	30.0	30.0	30.0	30.0
+80.0 | 80.0 | 80.0 | 80.0 | 80.0	80.0	80.0	80.0	80.0
+80.0	80.0	80.0	80.0	80.0
+80.0 | 80.0 | 80.0 | 80.0 | 70.0	80.0	70.0	80.0	70.0
+50.0 | 60.0 | 50.0 | 50.0	50.0	50.0	60.0	50.0
+40.0 | 40.0	40.0	40.0	40.0	40.0
+10.0	10.0	10.0	10.0	10.0
+80.0	80.0	80.0	80.0	80.0
+80.0 | 80.0 | 80.0 | 80.0 | 70.0	80.0	70.0	80.0	70.0
+80.0	80.0	80.0	80.0	80.0

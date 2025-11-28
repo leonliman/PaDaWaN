@@ -1,0 +1,5 @@
+<ImportConfig Version="0.2">
+	<CatalogTable Project="Procedures" Priority="10" ExtIDColumn="ExtID" NameColumn="Name" ParentExtIDColumn="ParentExtID" DataTypeColumn="DataType">
+		<DataSourceCSVFile File="opsCatalog_short.csv" />
+	</CatalogTable>
+</ImportConfig>

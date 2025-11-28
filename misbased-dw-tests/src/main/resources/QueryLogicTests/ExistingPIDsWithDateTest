@@ -1,0 +1,13 @@
+---Query---
+
+<Query pid="true">
+    <IDFilter filterIDType="PID">
+    	<ID value="1002" time="15.06.2009" />
+	    <Attribute alias="Param1" extID="0000000002" domain="Labor" />
+    </IDFilter>
+</Query>
+
+---Result---
+
+Calcium_g_dl	pid
+100.0	1002

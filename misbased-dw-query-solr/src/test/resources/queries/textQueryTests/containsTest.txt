@@ -1,0 +1,24 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="die" domain="arztbriefe" extID="brieftext"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Brieftext CONTAINS die
+T-Hebung in II, III, aVF, V2-V6.    EKG am 13.07.: >>Die<< ST-Hebungen sind nicht mehr so ausgeprägt.    EKG
+T-Hebung in II, III, aVF, V2-V6.    EKG am 13.07.: >>Die<< ST-Hebungen sind nicht mehr so ausgeprägt.    EKG
+habe er immer wieder leichte thorakale Schmerzen, >>die<< vom Hausarzt als vertebragen klassifiziert worden
+habe er immer wieder leichte thorakale Schmerzen, >>die<< vom Hausarzt als vertebragen klassifiziert worden
+l, welches links thorakal und ins Hals ausstrahlt. >>Die<< Beschwerden seien nicht belastungsabhängig. Dabei
+l, welches links thorakal und ins Hals ausstrahlt. >>Die<< Beschwerden seien nicht belastungsabhängig. Dabei
+m Echo ausgedehnte Akinesie der HW und Seitenwand. >>Die<< Patient hat anhaltende schwere AP und Luftnot. Es | m Echo ausgedehnte Akinesie der HW und Seitenwand. >>Die<< Patient hat anhaltende schwere AP und Luftnot. Es
+odens zum restlichen Bauchspeicheldrüsenparenchym. >>Die<< CT-Anzeichen würden für ein NPL in dieser Höhe spr
+odens zum restlichen Bauchspeicheldrüsenparenchym. >>Die<< CT-Anzeichen würden für ein NPL in dieser Höhe spr
+odens zum restlichen Bauchspeicheldrüsenparenchym. >>Die<< CT-Anzeichen würden für ein NPL in dieser Höhe spr
+ymphknoten.    Verlauf: Herr S. wurde zunächst auf >>die<< Intensivstation aufgenommen. >>Die<< Herzfrequenz norm
+ymphknoten.    Verlauf: Herr S. wurde zunächst auf >>die<< Intensivstation aufgenommen. >>Die<< Herzfrequenz norm

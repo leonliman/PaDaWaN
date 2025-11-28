@@ -1,0 +1,24 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Aufnahme" contentOperator="MORE_OR_EQUAL" desiredContent="24.12.2016" domain="stammdaten" extID="aufnahme"/>
+      <Attribute attrName="Aufnahme" contentOperator="MORE" desiredContent="24.12.2015" domain="stammdaten" extID="aufnahme"/>
+      <Attribute attrName="Aufnahme" contentOperator="LESS" desiredContent="12.12.2010" domain="stammdaten" extID="aufnahme"/>
+      <Attribute attrName="Aufnahme" contentOperator="LESS_OR_EQUAL" desiredContent="12.12.2016" domain="stammdaten" extID="aufnahme"/>
+      <Attribute attrName="Aufnahme" contentOperator="BETWEEN" desiredContent="1.1.2016;1.2.2018" domain="stammdaten" extID="aufnahme"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Aufnahme >= 24.12.2016	0
+Aufnahme > 24.12.2015	5
+Aufnahme < 12.12.2010	0
+Aufnahme <= 12.12.2016	10
+Aufnahme ]1.1.2016, 1.2.2018]	5

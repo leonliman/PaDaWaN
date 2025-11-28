@@ -1,0 +1,18 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="CaseID">
+    
+	    <Or>
+	        <Attribute alias="Param1" extID="0000002153" domain="Labor" reductionOp="max. Wert"/>
+	        <Attribute alias="Param2" extID="0000000002" domain="Labor" reductionOp="max. Wert"/>
+	    </Or>
+    </IDFilter>
+</Query>
+
+---Result---
+
+H_moglobin_g_dl	Calcium_g_dl
+13.8	
+11.3	100.0
+	120.0

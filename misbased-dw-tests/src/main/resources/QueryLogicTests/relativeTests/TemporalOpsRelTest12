@@ -1,0 +1,15 @@
+<!-- stationaerer Fall und davor oder danach wurde haemoblin gemessen -->
+
+---Query---
+<Query onlyCount="true">
+		<Attribute elementID="Param1" extID="fallart" domain="fallart" contais="stationaer"/>	
+		
+		<Attribute extID="0000002153" domain="labor" >		<!-- Haemoglobin -->
+			<TempOpRel refElemID="Param1" before="true" />
+			<TempOpRel refElemID="Param1" after="true" />
+		</Attribute>
+</Query>
+
+---Result---
+Count
+2

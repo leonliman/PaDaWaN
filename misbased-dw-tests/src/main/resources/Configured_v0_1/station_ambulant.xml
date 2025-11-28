@@ -1,0 +1,7 @@
+<ImportConfig>
+	<Data Project="Station">
+		<CSVData Dir="Bewegungen" ExtIDColumn="ORGPF" CaseIDColumn="FALNR" Encoding="Windows-1252" >
+			<Filter FilterColumn="BEWTY" FilterValue="4" />
+		</CSVData>
+	</Data>
+</ImportConfig>

@@ -1,0 +1,19 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Kalium (mmol/l)" domain="labor" extID="kalium_mmol_l">
+  		<TempOpAbs minDate="01.01.2016" maxDate="01.01.2017"/>
+  	</Attribute>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Kalium (mmol/l)
+50.0, 60.0, 50.0, 40.0
+40.0, 40.0
+10.0
+80.0
+80.0, 80.0, 80.0, 80.0, 70.0

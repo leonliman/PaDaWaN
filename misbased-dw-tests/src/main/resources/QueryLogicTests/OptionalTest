@@ -1,0 +1,18 @@
+---Query---
+
+<Query limitResult="10">
+	<IDFilter filterIDType="CaseID" distinct="FALSE">
+	    <Attribute alias="Param1" extID="Erste_Bewegung" domain="AufnahmeEntlassung" onlyDisplayExistence="true"  />
+	    <Attribute alias="Param2" extID="0000000002" domain="Labor" optional="TRUE" reductionOp="max. Wert"/>
+	</IDFilter>
+</Query>
+
+---Result---
+
+Erste_Bewegung	Calcium_g_dl
+X	
+X	100.0
+X	120.0
+X	
+X	
+X	

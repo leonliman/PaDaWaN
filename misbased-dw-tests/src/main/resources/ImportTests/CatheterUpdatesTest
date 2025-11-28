@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+    <Attribute extID="ZKAHKMEMED" domain="Herzkatheter" />
+</Query>
+
+---Result---
+
+ZKAHKVEEFP
+Blubberibub

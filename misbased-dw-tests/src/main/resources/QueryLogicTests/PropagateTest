@@ -1,0 +1,10 @@
+---Query---
+
+<Query limitResult="10">
+	<Attribute extID="S42" domain="Diagnose" onlyDisplayExistence="true" />
+</Query>
+
+---Result---
+
+S42
+X

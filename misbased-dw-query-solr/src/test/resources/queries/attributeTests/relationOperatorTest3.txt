@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <Attribute attrName="Alter" contentOperator="MORE" desiredContent="50" domain="stammdaten" extID="alter"/>
+    <Attribute attrName="Alter" contentOperator="LESS" desiredContent="90" domain="stammdaten" extID="alter"/>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+Alter > 50	Alter < 90
+70.0 | 60.0	70.0 | 60.0 | 10.0
+70.0	70.0
+70.0	70.0
+80.0	80.0

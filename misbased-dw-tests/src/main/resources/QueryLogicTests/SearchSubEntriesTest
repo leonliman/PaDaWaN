@@ -1,0 +1,11 @@
+---Query---
+
+<Query limitResult="10">
+   	<Attribute domain="" extID="Stammdaten" searchSubEntries="true" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+Stammdaten
+X
+X

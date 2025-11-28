@@ -1,0 +1,27 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Calcium (mmol/l)" domain="labor" extID="calcium_mmol_l"/>
+      <Attribute attrName="Natrium (mmol/l)" domain="labor" extID="natrium_mmol_l"/>
+    </DistributionRow>
+    <DistributionColumn>
+      <Attribute attrName="FallArt" contentOperator="EQUALS" desiredContent="teilstationaer" domain="stammdaten" extID="fallart"/>
+      <Attribute attrName="FallArt" contentOperator="EQUALS" desiredContent="stationaer" domain="stammdaten" extID="fallart"/>
+      <Attribute attrName="FallArt" contentOperator="EQUALS" desiredContent="ambulant" domain="stammdaten" extID="fallart"/>
+    </DistributionColumn>
+    <DistributionFilter>
+      <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="arzneimittelkommission" domain="arztbriefe" extID="brieftext"/>
+    </DistributionFilter>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+	Alle (Brieftext CONTAINS arzneimittelkommissi..)	Fälle	FallArt=teilstationaer	FallArt=stationaer	FallArt=ambulant	Summe	Doppelte
+Alle (Brieftext CONTAINS arzneimittelkommissi..)	2	1	1	0	0	1	0
+Calcium (mmol/l)	1	0	0	0	0	0	0
+Natrium (mmol/l)	2	1	1	0	0	1	0

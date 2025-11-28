@@ -1,0 +1,14 @@
+<!-- min und max shift, es gibt keinen rückgabewert für dieses intervall.. -->
+---Query---
+
+<Query>
+    <Attribute elementID="Param1" extID="0000000003" domain="Labor" />
+    <Attribute extID="0000000002" domain="Labor" >
+        <TempOpRel refElemID="Param1" yearShiftMin="8" yearShiftMax="9" />
+    </Attribute>
+</Query>
+
+---Result---
+
+Calcium_g_dl	Unobtanium_g_dl
+

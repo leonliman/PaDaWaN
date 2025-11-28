@@ -1,0 +1,15 @@
+<!-- after -->
+---Query---
+
+<Query>
+    <Attribute elementID="Param1" extID="0000002153" domain="Labor" />
+    <Attribute extID="0000000001" domain="Labor" >
+        <TempOpRel refElemID="Param1" after="true" />
+    </Attribute>
+</Query>
+
+---Result---
+
+H_moglobin_g_dl	Natrium_g_dl
+13.8	20.0
+11.3	15.0

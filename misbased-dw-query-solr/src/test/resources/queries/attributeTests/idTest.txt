@@ -1,0 +1,17 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <ID value="1000" />
+    <ID value="1003" />
+    <Attribute attrName="Protein (U)" domain="labor" extID="protein__u__"/>
+  </IDFilter>
+</Query>
+
+
+
+---Result---
+
+Protein (U)
+50.0 | 60.0 | 50.0 | 50.0
+10.0

@@ -1,0 +1,20 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="die" domain="arztbriefe" extID="brieftext"/>
+      <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="ekg" domain="arztbriefe" extID="brieftext"/>
+      <Attribute attrName="Brieftext" contentOperator="CONTAINS" desiredContent="luftnot" domain="arztbriefe" extID="brieftext"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Brieftext CONTAINS die	12
+Brieftext CONTAINS ekg	12
+Brieftext CONTAINS luftnot	5

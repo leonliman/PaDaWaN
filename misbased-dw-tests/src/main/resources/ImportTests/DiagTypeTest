@@ -1,0 +1,10 @@
+---Query---
+
+<Query>
+    <Attribute extID="Entlass-Diagnose" domain="Diagnose" onlyDisplayExistence="true"/>
+</Query>
+
+---Result---
+
+Entlass-Diagnose
+X

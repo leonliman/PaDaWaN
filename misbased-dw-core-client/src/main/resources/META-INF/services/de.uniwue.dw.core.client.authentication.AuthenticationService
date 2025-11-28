@@ -1,0 +1,3 @@
+#de.uniwue.dw.core.client.authentication.ExampleAuthenticationService
+de.uniwue.dw.core.client.authentication.LDAPAuthenticationService
+de.uniwue.dw.core.client.authentication.SQLAuthenticationService

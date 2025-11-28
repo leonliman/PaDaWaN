@@ -1,0 +1,14 @@
+---Query---
+
+<Query limitResult="10">
+    <IDFilter filterIDType="CaseID">
+	    <Attribute alias="Param1" extID="0000000001" name="Natrium" domain="Labor" reductionOp="letzter Wert" />
+	    <Attribute alias="Param2" extID="FallArt" domain="FallArt" reductionOp="letzter Wert" />
+    </IDFilter>	    
+</Query>
+
+---Result---
+
+Natrium_g_dl	FallArt
+20.0	stationaer
+15.0	ambulant

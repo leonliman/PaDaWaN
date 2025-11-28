@@ -1,0 +1,14 @@
+<!-- Test ob das aufaddieren von den shifts funktioniert. Intervall Zukunft test ist hier dabei. -->
+---Query---
+
+<Query>
+    <Attribute elementID="Param1" extID="0000000003" domain="Labor" />
+    <Attribute extID="0000000002" domain="Labor" >
+        <TempOpRel refElemID="Param1" monthShiftMin="8" yearShiftMin="7" yearShiftMax="10" dayShiftMax="200" />
+    </Attribute>
+</Query>
+
+---Result---
+
+Calcium_g_dl	Unobtanium_g_dl
+15.0	6.000035E9

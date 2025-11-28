@@ -1,0 +1,18 @@
+---Query---
+
+<Query limitResult="0">
+  <IDFilter filterIDType="CaseID">
+    <DistributionRow>
+      <Attribute attrName="Entlassung" contentOperator="PER_YEAR" desiredContent="2015;2015" domain="stammdaten" extID="entlassung"/>
+      <Attribute attrName="Aufnahme" contentOperator="PER_YEAR" desiredContent="2016;2016" domain="stammdaten" extID="aufnahme"/>
+    </DistributionRow>
+  </IDFilter>
+</Query>
+
+
+---Result---
+
+	Fälle
+Alle	19
+Entlassung ]1.1.2015, 1.1.2016]	5
+Aufnahme ]1.1.2016, 1.1.2017]	5
